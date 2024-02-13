@@ -1,0 +1,16 @@
+.nav-link{
+  font-size: 23px !important;
+  margin: 0px 10px;
+  
+}
+
+
+.navbar-brand{
+  font-size: 30px !important;
+  margin: 0px 10px;
+  margin-left: 12px;
+}
+.navbar{
+  position: fixed !important;;
+  width: 100%;
+}
