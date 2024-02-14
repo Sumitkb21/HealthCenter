@@ -1,7 +1,7 @@
 import React from 'react';
 import "./pastrecords.css";
 import { FaEye } from 'react-icons/fa';
-import {useState} from 'react';
+import {useState , useEffect} from 'react';
 
 const Pastrecords = () => {
   const patientRecords = [
@@ -17,15 +17,31 @@ const Pastrecords = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
+  useEffect(() => {
+    // Set initial state when component mounts
+    closeModal();
+  }, []);
   const openImage = (imageURL) => {
+    console.log(selectedImage,showModal);
     setSelectedImage(imageURL);
     setShowModal(true);
   };
 
   const closeModal = () => {
+    console.log(selectedImage,showModal);
     setShowModal(false);
     setSelectedImage(null);
   };
+
+  const handleSave = () => {
+      const link = document.createElement('a');
+      link.href= selectedImage;
+      link.download= "record.png";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+  }
 
   return (
     
@@ -46,12 +62,13 @@ const Pastrecords = () => {
                   ))}
                 </div>
                 {showModal && (
-                  <div className="modal">
-                    <div className="modal-content">
-                      <span className="close" onClick={closeModal}>&times;</span>
+                    <div className="mod">
+                      <div className="modal-content">
+                         <span className="close" onClick={()=>closeModal()}>&times;</span>
                       <img src={selectedImage} alt="Selected" />
-                    </div>
-                  </div>
+                      <button onClick={handleSave}>Save</button>
+                      </div>
+                      </div>
                 )}
               </section>
             

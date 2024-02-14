@@ -81,6 +81,8 @@ const lineWidth = 0.4; // Adjusted for a thinner pen-like stroke
 // const strokeStyle = 'black'; // Pen stroke color
 // const shadowColor ='#000';
 const shadowBlur =0.7;
+blackColorButton.style.border = "2px solid black";
+blackColorButton.style.borderRadius = "7px";
 
 canvas.addEventListener('mousedown', handleWritingStart);
 canvas.addEventListener('mousemove', handleWritingInProgress);
@@ -95,12 +97,24 @@ clearButton.addEventListener('click', handleClearButtonClick);
 saveButton.addEventListener('click', handleSaveButtonClick);
 blackColorButton.addEventListener('click',()=>{
     strokeColor = 'black';
+    blackColorButton.style.border = "2px solid black";
+    blackColorButton.style.borderRadius = "7px";
+    blueColorButton.style.border = "none";
+    redColorButton.style.border = "none";
 });
 blueColorButton.addEventListener('click',()=>{
     strokeColor = 'blue';
+    blueColorButton.style.border = "2px solid blue";
+    blueColorButton.style.borderRadius = "7px";
+    blackColorButton.style.border = "none";
+    redColorButton.style.border = "none";
 });
 redColorButton.addEventListener('click',()=>{
     strokeColor = 'red';
+    redColorButton.style.border = "2px solid red";
+    redColorButton.style.borderRadius = "7px";
+    blueColorButton.style.border = "none";
+    blackColorButton.style.border = "none";
 });
 
 
