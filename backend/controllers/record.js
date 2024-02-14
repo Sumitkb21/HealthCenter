@@ -1,0 +1,43 @@
+import { Record } from '../models/record.js';
+import {v2 as cloudinary} from 'cloudinary';          
+
+          
+cloudinary.config({ 
+  cloud_name: 'dt8idppf9', 
+  api_key: '774145224114334', 
+  api_secret: 'GPCyQ7o-9_QxL30Ni2PH6gufvjs' 
+});
+
+export const makeRecord =async(req,res)=>{
+    { 
+        // const data = {
+        //  image: "public/images/img.png"
+        // }
+        const {image} = req.body;
+        //cloudinary.uploader.upload(data.image)
+        cloudinary.uploader.upload(image)
+        .then(async(result)=>{
+        //  const image = new imgModel({
+        //         img: result.url
+        //     });
+        // const response = image.save();
+        console.log(result.url);
+
+        await Record.create({img:result.url});
+        res.status(200).send({
+          message: "success",
+          result
+         });
+        }).catch((error) => {
+         res.status(500).send({
+          message: "failure",
+          error
+         });
+        });
+    }
+}
+
+
+
+
+
