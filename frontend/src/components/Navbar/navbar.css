@@ -9,8 +9,11 @@
   font-size: 30px !important;
   margin: 0px 10px;
   margin-left: 12px;
+  
 }
 .navbar{
-  position: fixed !important;;
+  top: 0;
+  position: -webkit-sticky !important;
+  position: sticky !important;
   width: 100%;
 }
