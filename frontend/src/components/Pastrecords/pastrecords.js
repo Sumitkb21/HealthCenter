@@ -17,14 +17,9 @@ const Pastrecords = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
-  useEffect(() => {
-    // Set initial state when component mounts
-    closeModal();
-  }, []);
-  const openImage = (imageURL) => {
-    console.log(selectedImage,showModal);
-    setSelectedImage(imageURL);
-    setShowModal(true);
+  const openImage = async(imageURL) => {
+    await setShowModal(true);
+    await setSelectedImage(imageURL);
   };
 
   const closeModal = () => {
@@ -33,15 +28,19 @@ const Pastrecords = () => {
     setSelectedImage(null);
   };
 
-  const handleSave = () => {
-      const link = document.createElement('a');
-      link.href= selectedImage;
-      link.download= "record.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+  const downloadFileFromURL=(url, fileName)=>{
+    fetch(url)
+      .then(response => response.blob())
+      .then(blob => {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = fileName;
+        link.click();
+      })
+      .catch(error => console.error('Error downloading file:', error));
   }
+
+  
 
   return (
     
@@ -62,14 +61,18 @@ const Pastrecords = () => {
                   ))}
                 </div>
                 {showModal && (
-                    <div className="mod">
-                      <div className="modal-content">
-                         <span className="close" onClick={()=>closeModal()}>&times;</span>
-                      <img src={selectedImage} alt="Selected" />
-                      <button onClick={handleSave}>Save</button>
+                  <div className="mod">
+                     <div className="modal-content">
+                        <span className="close" onClick={closeModal}>&times;</span>
+                        <img src={selectedImage} alt="Selected" />
+                        <button type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> save </button>
                       </div>
-                      </div>
+                      
+                 </div>
                 )}
+
+
+               
               </section>
             
   );
