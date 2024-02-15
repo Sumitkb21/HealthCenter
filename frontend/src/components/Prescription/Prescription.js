@@ -1,25 +1,22 @@
 import React, { useEffect } from 'react';
 import UpadateCanvas from "./script"
 import  './prescription.css';
+import { json, useLocation } from 'react-router-dom';
 
 
 const Prescription = ( ) => {
 
-  
-  
-  const pres =document.getElementById('view-prescription');
-  const attr = pres.getAttribute('data-item')
-  // console.log(pres.getAttribute('data-item'));
-  
-  useEffect(() => {
-    
-    UpadateCanvas();
-  }, []);
-  
+  const location = useLocation();
+  const appointment = location.state.appointment; 
+  console.log(appointment);
 
+  useEffect(() => {
+    UpadateCanvas();
+  }, [location]);
+  
   return (
     <>
-    <p id='data' data-user = {attr}>
+    <p id='data' data-user = {JSON.stringify(appointment)}>
     </p>
       <div className="container">
         <div className="menu">
