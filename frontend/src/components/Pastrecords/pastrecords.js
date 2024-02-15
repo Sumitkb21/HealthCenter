@@ -1,7 +1,7 @@
 import React from 'react';
 import "./pastrecords.css";
 import { FaEye } from 'react-icons/fa';
-import {useState , useEffect} from 'react';
+import {useState } from 'react';
 
 const Pastrecords = () => {
   const patientRecords = [
