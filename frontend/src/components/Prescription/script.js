@@ -1,17 +1,15 @@
 import bg from "./bg.png";
 
 
-const UpadateCanvas=()=>{
+const UpadateCanvas=(appointmentDetails)=>{
 const canvas = document.getElementById('drawing-area');
 const canvasContext = canvas.getContext('2d');
 const clearButton = document.getElementById('clear-button');
 const saveButton = document.getElementById('save-button');
 const state = {
     mousedown: false,
-    points: []
+    points: [],
 };
-
-
 
 
 // Get references to the color buttons
@@ -21,17 +19,21 @@ const redColorButton = document.getElementById('red-color-button');
 
 
 
+const data = document.getElementById('data');
+const details = data.getAttribute('data-user');
+console.log(details);
+const appointment = JSON.parse(details);
 
 let strokeColor = 'black';
 
 
 
-const drName = "Dr. Sumit Bhadwa"
-const QueNo ="29";
-const pfNum="210412";
-const pName="SNEHA";
+let drName = appointment.doctorName;
+const QueNo = appointment.queueNo;
+const pfNum=appointment.pfNo;
+const pName=appointment.patientName;
 const regNum="12H23";
-const regDate="1/2/2003";
+const regDate=appointment.date;
 const drName_txt = `Name : ${drName}`;
 const QueNo_txt = `Que No. : ${QueNo}`;
 const pfNum_txt = `pf no. : ${pfNum}`;
