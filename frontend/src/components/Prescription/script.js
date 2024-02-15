@@ -4,8 +4,12 @@ import bg from "./bg.png";
 const UpadateCanvas=(appointmentDetails)=>{
 const canvas = document.getElementById('drawing-area');
 const canvasContext = canvas.getContext('2d');
+const undoButton = document.getElementById('undo-button');
 const clearButton = document.getElementById('clear-button');
 const saveButton = document.getElementById('save-button');
+
+
+
 const state = {
     mousedown: false,
     points: [],
@@ -23,6 +27,7 @@ const data = document.getElementById('data');
 const details = data.getAttribute('data-user');
 console.log(details);
 const appointment = JSON.parse(details);
+
 
 let strokeColor = 'black';
 
@@ -59,31 +64,29 @@ function drawText(){
     canvasContext.fillText(regDate_txt,400,160);
 }
 
+let restore_array=[];
+let index=-1;
 
-
-// Call the drawText function
 
 var backgroundImage = new Image();
-    backgroundImage.onload = function() {
+backgroundImage.onload = function() {
         canvasContext.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
         drawText();
+        restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        index=0;
     };
 
 backgroundImage.src = bg;
 
 const defaultImage = () => {
-    console.log('sabse pahle me');
     var backgroundImage = new Image();
     backgroundImage.onload = function() {
         canvasContext.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
         drawText();
     };
-    console.log('pahle me');
     backgroundImage.src = bg;
-    console.log("ab tu");
 }
 
-// document.addEventListener("DOMContentLoaded", defaultImage);
 
 const lineWidth = 0.4; // Adjusted for a thinner pen-like stroke
 // const strokeStyle = 'black'; // Pen stroke color
@@ -101,8 +104,10 @@ canvas.addEventListener('touchstart', handleWritingStart);
 canvas.addEventListener('touchmove', handleWritingInProgress);
 canvas.addEventListener('touchend', handleDrawingEnd);
 
+undoButton.addEventListener('click',handleUndoButtonClick);
 clearButton.addEventListener('click', handleClearButtonClick);
 saveButton.addEventListener('click', handleSaveButtonClick);
+
 blackColorButton.addEventListener('click',()=>{
     strokeColor = 'black';
     blackColorButton.style.border = "2px solid black";
@@ -146,6 +151,10 @@ function handleDrawingEnd(event) {
     event.preventDefault();
     state.mousedown = false;
     state.points = [];
+    if(event.type !== 'mouseout'){
+        restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        index+=1;
+    }
 }
 
 function handleClearButtonClick(event) {
@@ -156,14 +165,6 @@ function handleClearButtonClick(event) {
 
 function handleSaveButtonClick(event) {
     event.preventDefault();
-    // const image = canvas.toDataURL("image/png");
-    // const link = document.createElement("a");
-    // link.href = image;
-    // link.download = "canvas_image.png";
-    // document.body.appendChild(link);
-    // link.click();
-    // document.body.removeChild(link);
-    console.log("me call hua hu");
     const image = canvas.toDataURL("image/png");
 
     fetch('http://localhost:4000/api/v1/users/record', {
@@ -175,7 +176,7 @@ function handleSaveButtonClick(event) {
     })
     .then(response => {
         if (response.ok) {
-            console.log('Image uploaded successfully');
+            alert('Image uploaded successfully');
             // You can perform any additional actions here after successful upload
         } else {
             throw new Error('Failed to upload image');
@@ -222,6 +223,15 @@ function drawSmoothLine() {
     canvasContext.strokeStyle = strokeColor;
     canvasContext.lineCap = 'round'; // Set line cap to round for smoother edges
     canvasContext.stroke();
+}
+
+function handleUndoButtonClick(event){
+    event.preventDefault();
+    if(index>=1){
+        index-=1;
+        restore_array.pop();
+        canvasContext.putImageData(restore_array[index],0,0);
+    }
 }
 
 }
