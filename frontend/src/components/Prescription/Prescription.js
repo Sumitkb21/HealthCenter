@@ -4,12 +4,14 @@ import  './prescription.css';
 
 
 const Prescription = () => {
+  const pres =document.getElementById('view-prescription');
+  const attr = pres.getAttribute('data-item')
   useEffect(() => {
     UpadateCanvas();
   }, [ ]);
 
   return (
-    <>
+    <><p id='data' data-user = {attr}></p>
       <div className="container">
         <div className="menu">
           {/* <button id="color-menu-button" className="menu-button" type="button">Color</button>

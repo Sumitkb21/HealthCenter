@@ -5,7 +5,7 @@ import {useState } from 'react';
 
 const Pastrecords = () => {
   const patientRecords = [
-    { patientName: 'John Doe', doctorName: 'Dr. Smith', date: '2024-02-10' ,imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png"},
+    { patientName: 'John Doe', doctorName: 'Dr. Smith', date: '2024-02-10' ,imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707938244/canvas_image_zoyd57.png"},
     { patientName: 'Jane Smith', doctorName: 'Dr. Johnson', date: '2024-01-25', imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png" },
     { patientName: 'Jane Smith', doctorName: 'Dr. Johnson', date: '2024-01-25', imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png" },
     // Add more records as needed
@@ -44,7 +44,7 @@ const Pastrecords = () => {
 
   return (
     
-              <section className='pastrecords'>
+              <section className='pastrecords' >
                 <h2>Past Records</h2>
                 <div className="record-container">
                   {patientRecords.map((record, index) => (
@@ -65,7 +65,7 @@ const Pastrecords = () => {
                      <div className="modal-content">
                         <span className="close" onClick={closeModal}>&times;</span>
                         <img src={selectedImage} alt="Selected" />
-                        <button type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> save </button>
+                        <button className="downloadimg mt-2" type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> Save </button>
                       </div>
                       
                  </div>
