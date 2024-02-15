@@ -1,15 +1,24 @@
 /* Home.css */
+
+
 body, html {
     height: 100%;
     margin: 0;
+    padding: 0;
+    
   }
   
   
+
+  *{
+    box-sizing: border-box;
+  }
   .Home{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
+    box-sizing: border-box;
     height: 100vh;
   }
 

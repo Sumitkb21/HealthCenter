@@ -1,16 +1,27 @@
 import React, { useEffect } from 'react';
 import UpadateCanvas from "./script"
 import  './prescription.css';
-import { json, useLocation } from 'react-router-dom';
+import { json, useLocation,useNavigate } from 'react-router-dom';
 
 
 const Prescription = ( ) => {
 
   const location = useLocation();
-  const appointment = location.state.appointment; 
-  console.log(appointment);
+  const navigate = useNavigate();
+  
+
+  let appointment = location.state?.appointment;
 
   useEffect(() => {
+    appointment = location.state?.appointment;
+    if (!appointment) {
+      // Navigate to /appointments
+      // Add your navigation logic here
+      console.log(appointment);
+      navigate('/appointments');
+  
+  
+    }
     UpadateCanvas();
   }, [location]);
   

@@ -10,7 +10,10 @@ import Prescription from "./components/Prescription/Prescription";
 import Appointments from './components/Doctor/appointments';
 
 
+
 function App() {
+
+  
   return (
     <>
   <Navbar />

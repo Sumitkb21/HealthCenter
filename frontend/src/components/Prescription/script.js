@@ -32,13 +32,21 @@ const appointment = JSON.parse(details);
 let strokeColor = 'black';
 
 
+    
+let drName="";
+let QueNo="";
+let pfNum="";
+let pName="";
+let regNum = "12H23";
+let regDate="";
 
-let drName = appointment.doctorName;
-const QueNo = appointment.queueNo;
-const pfNum=appointment.pfNo;
-const pName=appointment.patientName;
-const regNum="12H23";
-const regDate=appointment.date;
+if (appointment) {
+    drName = appointment.doctorName;
+    QueNo = appointment.queueNo;
+    pfNum = appointment.pfNo;
+    pName = appointment.patientName;
+    regDate = appointment.date;
+}
 // const drName = "Dr. Sumit Bhadwa"
 // const QueNo ="29";
 // const pfNum="210412";

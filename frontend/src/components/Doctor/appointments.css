@@ -39,3 +39,43 @@
     cursor: pointer;
     border-radius: 8px;
 }
+
+.search {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search__input-container {
+    position: relative;
+  }
+  
+  .search__input {
+    padding: 8px 40px 8px 12px; /* Adjust right padding for the icon */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    flex: 1; /* Allow input to grow and take remaining space */
+  }
+  
+  .search__button {
+    padding: 8px 16px;
+    background-color: transparent;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    position: absolute;
+    right: 0px; /* Adjust as needed */
+    top: 50%;
+    transform: translateY(-51%);
+  }
+  
+  .search__button:hover {
+    background-color: transparent;
+  }
+  
+  .search__button:focus {
+    outline: none;
+  }
+  
