@@ -8,12 +8,15 @@ const Pastrecords = () => {
     { patientName: 'John Doe', doctorName: 'Dr. Smith', date: '2024-02-10' ,imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707938244/canvas_image_zoyd57.png"},
     { patientName: 'Jane Smith', doctorName: 'Dr. Johnson', date: '2024-01-25', imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png" },
     { patientName: 'Jane Smith', doctorName: 'Dr. Johnson', date: '2024-01-25', imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png" },
+    { patientName: 'Jane Smith', doctorName: 'Dr. Johnson', date: '2024-01-25', imageURL: "https://res.cloudinary.com/dsr4m1th2/image/upload/v1707758604/u8ap4xlezsasaeqlkyrg.png" },
     // Add more records as needed
   ];
+  
   // const openImage = (imageURL) => {
   //   // Logic to open the image, for example, using window.open()
   //   window.open(imageURL);
   // };
+
   const [showModal, setShowModal] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -40,10 +43,8 @@ const Pastrecords = () => {
       .catch(error => console.error('Error downloading file:', error));
   }
 
-  
-
   return (
-    
+    <div className='page'>
               <section className='pastrecords' >
                 <h2>Past Records</h2>
                 <div className="record-container">
@@ -74,6 +75,7 @@ const Pastrecords = () => {
 
                
               </section>
+      </div>
             
   );
 }

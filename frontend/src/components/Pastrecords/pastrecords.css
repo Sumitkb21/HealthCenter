@@ -3,8 +3,10 @@
     text-align: center;
     
 }
-
-
+.page{
+  min-height: calc(100vh - 56px);
+  background-color: #d3ffe4;
+} 
 
 .record-container {
     display: flex;

@@ -13,7 +13,7 @@ const Appointments = () => {
         // Add more records as needed
     ];
   return (
-    
+    <div className="page">
     <section className='appointments'>
       <h2>Appointments</h2>
       <div className="appointment-container">
@@ -31,11 +31,12 @@ const Appointments = () => {
                 >
                 <FaEye /> View Prescription
             </button>
-
           </div>
+          
         ))}
       </div>
     </section>
+    </div>
   )
 }
 

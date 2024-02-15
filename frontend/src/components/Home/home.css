@@ -1,16 +1,17 @@
 /* Home.css */
-body, html {
+/* body, html {
     height: 100%;
     margin: 0;
-  }
-  
+  } */
+
+
   
   .Home{
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100vh;
+    min-height: calc(100vh - 56px);
   }
 
   .Home{
@@ -28,15 +29,15 @@ body, html {
   
   /* Adjustments for smaller screens */
 
-
-  /* .layer{
+/* 
+  .layer{
     background-color: black;
     background-size: 100vh;
     
   } */
-
-  .CenterText{
+ 
+.CenterText{
     position: relative;
     margin: auto;
     font-size: 70px;
-  }
+  } 
