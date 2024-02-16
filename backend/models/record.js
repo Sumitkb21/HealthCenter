@@ -1,6 +1,13 @@
 import mongoose from "mongoose";
 const imageSchema = new mongoose.Schema({  
-    img: String
+    imglink: String,
+    pfnumber: String,
+    createdAt: {
+        type: Date,
+        default : Date.now(),
+    },
+
+
 }); 
 
 export const Record = mongoose.model("Record", imageSchema);

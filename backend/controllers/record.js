@@ -1,4 +1,3 @@
-import { version } from 'mongoose';
 import { Record } from '../models/record.js';
 import {v2 as cloudinary} from 'cloudinary';          
 
@@ -11,12 +10,9 @@ cloudinary.config({
 
 export const makeRecord =async(req,res)=>{
     { 
-        // const data = {
-        //  image: "public/images/img.png"
-        // }
-        const {image} = req.body;
         
-        //cloudinary.uploader.upload(data.image)
+        const {image , pfnumber } = req.body;
+        
         cloudinary.uploader.upload(image,{public_id:"prescription"})
         .then(async(result)=>{
         console.log(result.url);
