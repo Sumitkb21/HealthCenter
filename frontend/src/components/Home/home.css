@@ -1,6 +1,9 @@
   *{
     box-sizing: border-box;
   }
+
+  
+
   .Home{
     display: flex;
     justify-content: center;

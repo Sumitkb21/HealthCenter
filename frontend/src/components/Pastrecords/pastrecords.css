@@ -2,6 +2,7 @@
     
     text-align: center;
     
+
 }
 .page1{
   min-height: calc(100vh - 56px);
@@ -48,6 +49,7 @@
 .mod {
     display: flex; 
     position: fixed;
+
     z-index: 5;
     left: 0;
     top: 0;
