@@ -8,7 +8,7 @@ import Login from './components/login';
 import Register from './components/register';
 import Prescription from "./components/Prescription/Prescription";
 import Appointments from './components/Doctor/appointments';
-
+import LoginStaff from './components/loginStaff';
 
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
     <Route path="/pastrecords" element= {<Pastrecords/>}/>;
     <Route path="/appointments" element= {<Appointments/>}/>;
     <Route path="/login" element= {<Login/>}/>;
+    <Route path="/login/staff" element= {<LoginStaff/>}/>;
     <Route path="/register" element= {<Register/>}/>;
    </Routes> 
    </>

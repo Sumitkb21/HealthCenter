@@ -133,36 +133,36 @@ export default function Navbar() {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/">
-                  <h5>Home</h5>
+                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link active" to="/pastrecords">
-                  <h5>Past Records</h5>
+                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Past Records</h5>
                 </NavLink>
               </li>
               { isVisible ? (
                 <li className="nav-item dropdown">
-                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{fontFamily: 'Helvetica Neue'}}>
                     Profile
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <NavLink className="dropdown-item" to="/profile">Profile</NavLink>
-                    <NavLink className="dropdown-item" to="/settings">Settings</NavLink>
+                    <NavLink className="dropdown-item" to="/profile" style={{fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
+                    <NavLink className="dropdown-item" to="/settings" style={{fontFamily: 'Helvetica Neue'}} >Settings</NavLink>
                     <div className="dropdown-divider"></div>
-                    <NavLink className="dropdown-item" to="/logout">Logout</NavLink>
+                    <NavLink className="dropdown-item" to="/logout" style={{fontFamily: 'Helvetica Neue'}}>Logout</NavLink>
                   </div>
                 </li>
                 ):
                 (<>
                 <li className="nav-item">
                 <NavLink className="nav-link active" to="/pastrecords">
-                  <h5>Edit Profile</h5>
+                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Edit Profile</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link active" to="/pastrecords">
-                  <h5>Login</h5>
+                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Login</h5>
                 </NavLink>
               </li>
                 </>)

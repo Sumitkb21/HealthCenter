@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import axios from "axios" ;
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faHashtag,faLock} from '@fortawesome/free-solid-svg-icons';
+import {faEnvelope,faLock} from '@fortawesome/free-solid-svg-icons';
 import './form.css'
 
 
-export default function Login() {
-    const [pfnumber, setpfnumber] = useState('');
+export default function LoginStaff() {
+    const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
     
 
@@ -17,7 +17,7 @@ export default function Login() {
          try {
             
             const user  = await axios.post("http://localhost:4000/api/v1/users/login",{
-                pfnumber:pfnumber , 
+                email:email , 
                 password:password,
             });
 
@@ -35,16 +35,16 @@ export default function Login() {
     <form className='card' style={{ background:'#eeeeee'}}>
       <div className='form my-4' style={{textAlign:'center'}}>    
         <div className='text-center my-2'>
-          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="string" name="pfnumber" onChange={(e)=>{setpfnumber(e.target.value)} } placeholder='PF number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+          <FontAwesomeIcon icon={faEnvelope} />&nbsp;&nbsp;<input type="email" name="email" onChange={(e)=>{setEmail(e.target.value)} } placeholder='Email' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  /><br />
         </div>
         <div className='text-center my-2'>
-          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="text" name="password" onChange={(e)=>{setpassword(e.target.value)} } placeholder='Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="text" name="password" onChange={(e)=>{setpassword(e.target.value)} } placeholder='Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  /><br />
         </div>
         <div className='text-center my-2'>
-          <button id="click"  type='submit' style={{border:'none',fontFamily: 'Helvetica Neue' }} >Sign In</button> 
+          <button  id="click" type='submit' style={{border:'none',fontFamily: 'Helvetica Neue'}} >Sign In</button>
         </div>
         <div className='text-center my-2'>
-          Create new account?  <Link  to="/register" style={{fontFamily: 'Helvetica Neue'}}  >Sign Up</Link>
+          Create new account?  <Link  to="/register" style={{fontFamily: 'Helvetica Neue'}} >Sign Up</Link>
         </div>
       </div>
     </form>
