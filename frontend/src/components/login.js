@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import axios from "axios" ;
-import Navbar from "./Navbar/navbar";
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faHashtag,faLock} from '@fortawesome/free-solid-svg-icons';
+
+
+
 export default function Login() {
     const [pfnumber, setpfnumber] = useState('');
     const [password, setpassword] = useState('');
@@ -25,19 +30,25 @@ export default function Login() {
 
     return (
     <>
-
-    <Navbar/>
-    <h1 style={{ textAlign: "center" }}>Login Page</h1>  
-    <form action="POST">
-    <div className='form'>
-
-      <input type="string" name="pfnumber" onChange={(e)=>{setpfnumber(e.target.value)} } placeholder='PF number' /><br />
-      <input type="text" name="passwors" onChange={(e)=>{setpassword(e.target.value)} } placeholder='Password' /><br />
-      
-      <button type='submit' onClick={submit}> Submit</button>
+   <div className="reg">
+      <h2 style={{textAlign:'center',color:'white', fontFamily: 'Helvetica Neue'}}>Login Form</h2>
+    <form className='card'>
+      <div className='form my-4' style={{textAlign:'center'}}>    
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="string" name="pfnumber" onChange={(e)=>{setpfnumber(e.target.value)} } placeholder='PF number' /><br />
+        </div>
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="text" name="password" onChange={(e)=>{setpassword(e.target.value)} } placeholder='Password' /><br />
+        </div>
+        <div className='text-center my-2'>
+          <button  type='submit' >Sign In</button>
+        </div>
+        <div className='text-center my-2'>
+          Create new account?  <Link  to="/register" >Sign Up</Link>
+        </div>
       </div>
-       
     </form>
+    </div>
     </>
   )
 }
