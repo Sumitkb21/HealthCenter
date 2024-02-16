@@ -40,12 +40,12 @@ let pName="";
 let regNum = "12H23";
 let regDate="";
 
-if (appointment) {
-    drName = appointment.doctorName;
-    QueNo = appointment.queueNo;
-    pfNum = appointment.pfNo;
-    pName = appointment.patientName;
-    regDate = appointment.date;
+if (appointment ) {
+    drName = appointment.doctorname;
+    // QueNo = appointment.queueNo;
+    pfNum = appointment.pfNumber;
+    pName = appointment.firstname;
+    // regDate = appointment.date;
 }
 // const drName = "Dr. Sumit Bhadwa"
 // const QueNo ="29";
@@ -77,22 +77,30 @@ let index=-1;
 
 
 var backgroundImage = new Image();
+backgroundImage.crossOrigin = "Anonymous";
 backgroundImage.onload = function() {
         canvasContext.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
-        drawText();
+        // if( appointment.imageURL === "") {
+            drawText();
         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        // }
         index=0;
     };
 
+// if(appointment && appointment.imageURL === "")
 backgroundImage.src = bg;
+// else backgroundImage.src = appointment.imageURL
 
 const defaultImage = () => {
     var backgroundImage = new Image();
     backgroundImage.onload = function() {
         canvasContext.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+        // if( appointment.imageURL === "")
         drawText();
     };
+    // if(appointment && appointment.imageURL === "")
     backgroundImage.src = bg;
+    // else backgroundImage.src = appointment.imageURL
 }
 
 
@@ -160,7 +168,7 @@ function handleDrawingEnd(event) {
     state.mousedown = false;
     state.points = [];
     if(event.type !== 'mouseout'){
-        restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        if( appointment.imageURL === "") restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         index+=1;
     }
 }

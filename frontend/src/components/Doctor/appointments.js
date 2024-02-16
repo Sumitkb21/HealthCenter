@@ -2,28 +2,77 @@ import React from 'react';
 import "./appointments.css";
 import { FaEye,FaSearch } from 'react-icons/fa';
 import { Link ,useNavigate} from 'react-router-dom';
-import {useState , useEffect} from 'react';
+import { Context } from '../..';
+import { Navigate } from 'react-router-dom';
+import {useState , useEffect, useContext} from 'react';
+import axios from 'axios';
+
 
 const Appointments = () => {
+  
+  const {isAuthenticatedDoctor } = useContext(Context); 
+  const [appointments,setAppointments]=useState([]);
+
+  if(!isAuthenticatedDoctor){
+    return <Navigate to="/"/> ; 
+  }
+
+  
+
+
     const navigate =useNavigate();
-    const appointments = [
-        { doctorName: 'Dr. Smith', patientName: 'John Doe', queueNo: 'A001', pfNo: 'PF123', date: '2024-02-10' },
-        { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A002', pfNo: 'PF456', date: '2024-01-25' },
-        { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A003', pfNo: 'PF789', date: '2024-01-25' },
-        // Add more records as needed
-    ];
+    // const appointments = [
+    //     { doctorName: 'Dr. Smith', patientName: 'John Doe', queueNo: 'A001', pfNo: 'PF123', date: '2024-02-10', imageURL: "" },
+    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A002', pfNo: 'PF456', date: '2024-01-25', imageURL: "" },
+    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A003', pfNo: 'PF789', date: '2024-01-25' , imageURL: ""},
+    //     // Add more records as needed
+    // ];
+
+    let appoint= []
+    useEffect(() => {
+    
+      axios.get("http://localhost:4000/api/v1/users/getAppointmentsdoctor",{
+      withCredentials:true,
+    })
+    .then(res=>{
+      // setUser(res.data.user);
+      console.log(res.data.appointments);
+      appoint = res.data.appointments ;
+      setAppointments(appoint);
+      // console.log(user)
+      // setIsAuthenticatedReception(true);
+      // setIsAuthenticated(false);
+      // setLoading(false);
+
+    })
+    .catch((error)=>{
+      console.log(error.response.data.message);
+     
+    })
+
+  }, []) 
+
+  useEffect(()=>{
+    // patientRecords=Records;
+    setSearchResults(appointments);
+
+  },[appointments])
     // const [hosts, setHosts] = useState([]);
     const [searchResults, setSearchResults] = useState(appointments);
     const handleSubmit = (e) => e.preventDefault();
 
     const handleSearchChange = (e) => {
-        if (!e.target.value) return setSearchResults(appointments);
+      const searchString = e.target.value.trim().toLowerCase();
+      if (!searchString) {
+          setSearchResults(appointments); // Display all appointments when search is empty
+          return;
+      }
 
-            const searchString = e.target.value.toLowerCase();
+            // const searchString = e.target.value.toLowerCase();
             const resultsArray = appointments.filter(
                 (appointment) =>
                 Object.values(appointment).some(value =>
-                    value.toLowerCase().includes(searchString)
+                    typeof value == "string" && value.toLowerCase().includes(searchString)
                 )
         
             );
@@ -56,12 +105,12 @@ const Appointments = () => {
         {searchResults.map((appointment, index) => (
           <div key={index} className="appointment-box">
             <span>
-              <strong>Patient Name:</strong> {appointment.patientName},&nbsp;&nbsp;
+              <strong>Patient Name:</strong> {appointment.firstname},&nbsp;&nbsp;
               <strong>Date:</strong> {appointment.date}
             </span>&nbsp;&nbsp;&nbsp;
             <button
                 className="view-prescription-button"
-                id="view-prescription"
+                id="view-prescription"  
                 
                 onClick={() => navigate('/prescription', {state: {appointment: appointment}})}
                 >

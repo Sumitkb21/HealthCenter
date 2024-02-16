@@ -40,12 +40,14 @@ const handleSaveButtonClick=(event)=> {
 
   useEffect(() => {
     appointment = location.state?.appointment;
+    
     if (!appointment) {
       // Navigate to /appointments
       // Add your navigation logic here
       console.log(appointment);
       navigate('/appointments');
     }
+    if(appointment && appointment.imageURL !== "")  document.getElementById("undo-button").style.display = "none";
     UpadateCanvas();
   }, [location]);
     return (
