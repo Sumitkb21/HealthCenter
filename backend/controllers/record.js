@@ -1,3 +1,4 @@
+import { version } from 'mongoose';
 import { Record } from '../models/record.js';
 import {v2 as cloudinary} from 'cloudinary';          
 
@@ -14,16 +15,16 @@ export const makeRecord =async(req,res)=>{
         //  image: "public/images/img.png"
         // }
         const {image} = req.body;
+        
         //cloudinary.uploader.upload(data.image)
-        cloudinary.uploader.upload(image)
+        cloudinary.uploader.upload(image,{public_id:`prescription`})
         .then(async(result)=>{
         //  const image = new imgModel({
         //         img: result.url
         //     });
         // const response = image.save();
-        console.log(result.url);
-
-        await Record.create({img:result.url});
+        console.log(result);
+        await Record.create({img :result.url});       
         res.status(200).send({
           message: "success",
           result
@@ -36,6 +37,7 @@ export const makeRecord =async(req,res)=>{
         });
     }
 }
+
 
 
 
