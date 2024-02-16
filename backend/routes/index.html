@@ -228,7 +228,7 @@ function handleSaveButtonClick(event) {
     console.log("me call hua hu");
     const image = canvas.toDataURL("image/png");
 
-    fetch('/api/v1/users/record', {
+    fetch('/api/v1/users/changeRecord', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

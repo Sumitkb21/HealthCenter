@@ -114,7 +114,7 @@ canvas.addEventListener('touchend', handleDrawingEnd);
 
 undoButton.addEventListener('click',handleUndoButtonClick);
 clearButton.addEventListener('click', handleClearButtonClick);
-saveButton.addEventListener('click', handleSaveButtonClick);
+// saveButton.addEventListener('click', handleSaveButtonClick);
 
 blackColorButton.addEventListener('click',()=>{
     strokeColor = 'black';
@@ -171,30 +171,30 @@ function handleClearButtonClick(event) {
     defaultImage();
 }
 
-function handleSaveButtonClick(event) {
-    event.preventDefault();
-    const image = canvas.toDataURL("image/png");
+// function handleSaveButtonClick(event) {
+//     event.preventDefault();
+//     const image = canvas.toDataURL("image/png");
 
-    fetch('http://localhost:4000/api/v1/users/record', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ image: image })
-    })
-    .then(response => {
-        if (response.ok) {
-            alert('Image uploaded successfully');
-            // You can perform any additional actions here after successful upload
-        } else {
-            throw new Error('Failed to upload image');
-        }
-    })
-    .catch(error => {
-        console.error('Error uploading image:', error);
-        // Handle error, show error message, etc.
-    });
-}
+//     fetch('http://localhost:4000/api/v1/users/record', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ image: image })
+//     })
+//     .then(response => {
+//         if (response.ok) {
+//             alert('Image uploaded successfully');
+//             // You can perform any additional actions here after successful upload
+//         } else {
+//             throw new Error('Failed to upload image');
+//         }
+//     })
+//     .catch(error => {
+//         console.error('Error uploading image:', error);
+//         // Handle error, show error message, etc.
+//     });
+// }
 
 
 function getMosuePositionOnCanvas(event) {
@@ -235,6 +235,7 @@ function drawSmoothLine() {
 
 function handleUndoButtonClick(event){
     event.preventDefault();
+    console.log('dejg ti');
     if(index>=1){
         index-=1;
         restore_array.pop();

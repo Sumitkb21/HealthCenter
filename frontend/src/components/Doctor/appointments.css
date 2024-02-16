@@ -1,4 +1,4 @@
-.page{
+.page2{
     min-height: calc(100vh - 56px);
     background-color: #d3ffe4;
   }
@@ -6,7 +6,6 @@
 .appointments {    
     text-align: center;   
 }
-
 
 .appointment-container {
     display: flex;

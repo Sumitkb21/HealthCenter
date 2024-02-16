@@ -44,7 +44,7 @@ const Pastrecords = () => {
   }
 
   return (
-    <div className='page'>
+    <div className='page1'>
               <section className='pastrecords' >
                 <h2>Past Records</h2>
                 <div className="record-container">

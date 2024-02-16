@@ -33,7 +33,7 @@ const Appointments = () => {
     
       
   return (
-    <div className="page">
+    <div className="page2">
     <section className='appointments'>
       <h2>Appointments</h2>
       <div className="appointment-container">

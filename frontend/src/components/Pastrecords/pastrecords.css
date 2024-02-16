@@ -3,9 +3,9 @@
     text-align: center;
     
 }
-.page{
+.page1{
   min-height: calc(100vh - 56px);
-  background-color: #d3ffe4;
+  background-color: #e4ffee;
 } 
 
 .record-container {
@@ -19,7 +19,7 @@
     border-radius: 8px;
     padding: 10px;
     margin: 10px;
-    min-width: 50%;
+    min-width: 80%;
     width: fit-content;
     background-color: #a1ccb2; /* Change the background color */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -48,7 +48,7 @@
 .mod {
     display: flex; 
     position: fixed;
-    z-index: 1;
+    z-index: 5;
     left: 0;
     top: 0;
     width: 100%;
