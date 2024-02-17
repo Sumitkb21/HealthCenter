@@ -54,7 +54,7 @@ const PatientNavbar = () => {
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <div className="container-fluid my-0">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink className="navbar-brand" to="/profile">
             <div className="logo-cls">
               <img src={logo} alt="logo" width="40px" height="38px" />
               <h5 style={{ marginLeft: '10px', marginTop: '5px', background: 'linear-gradient(to right,  #84D25A, #0194B6)', WebkitBackgroundClip: 'text', color: 'transparent', fontFamily: 'Helvetica Neue' }}> <b> HEALTH CENTER</b></h5>
@@ -75,7 +75,7 @@ const PatientNavbar = () => {
           <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <NavLink className="nav-link active" aria-current="page" to="/">
+                <NavLink className="nav-link active" aria-current="page" to="/profile">
                   <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
                 </NavLink>
               </li>
@@ -100,7 +100,7 @@ const PatientNavbar = () => {
                   </button>
                   <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <NavLink className="dropdown-item" to="/profile" style={{fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
-                    <NavLink className="dropdown-item" to="/settings" style={{fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
+                    <NavLink className="dropdown-item" to="/editProfile" style={{fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
                     <div className="dropdown-divider"></div>
                     <NavLink className="dropdown-item"  style={{fontFamily: 'Helvetica Neue'}} onClick={logoutHandler}>Logout</NavLink>
                   </div>
@@ -108,13 +108,13 @@ const PatientNavbar = () => {
                 ):
                 (<>
                 <li className="nav-item">
-                <NavLink className="nav-link active" to="/pastrecords">
+                <NavLink className="nav-link active" to="/editProfile">
                   <h5 style={{fontFamily: 'Helvetica Neue'}}>Edit Profile</h5>
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link active" to="/pastrecords">
-                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Login</h5>
+                <NavLink className="nav-link active" onClick={logoutHandler}>
+                <button  disabled={loading} style={{fontFamily: 'Helvetica Neue'}}>Logout</button>
                 </NavLink>
               </li>
                 </>)

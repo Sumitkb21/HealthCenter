@@ -94,7 +94,7 @@ export const getPastrecord = async(req,res) =>{
     success: false,
     message: "Login first",
   });
-  
+    
   const decoded = jwt.verify(token, process.env.JWT_SECRET);
   
   const {pfnumber} = await User.findById(decoded._id);

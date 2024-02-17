@@ -8,7 +8,6 @@ import Login from './components/Patient/login';
 import Register from './components/Not_login/register';
 import Prescription from "./components/Prescription/Prescription";
 import Appointments from './components/Doctor/appointments';
-import Medical from './components/Medical/medical';
 import Doctorlogin from './components/Doctor/doctorlogin';
 import DoctorHome from './components/Doctor/doctorHome';
 import DoctorProfile from './components/Doctor/doctorProfile';
@@ -30,6 +29,8 @@ import LabHome from './components/Lab/labNavbar';
 import Lablogin from './components/Lab/Lablogin';
 import NurseHome from './components/Nurse/nurseHome';
 import NurseLogin from './components/Nurse/nurseLogin';
+import Medicallogin from './components/Medical/medicalLogin'
+import MedicalHome from './components/Medical/medicalHome'
 
 
 
@@ -195,24 +196,24 @@ function App() {
 
 
   
-  axios.get("http://localhost:4000/api/v1/users/receptionHome",{
-    withCredentials:true,
-  })
-  .then(res=>{
-    setUser(res.data.user);
-    console.log(res.data.user);
-    // console.log(user)
-    setIsAuthenticatedReception(true);
-    // setIsAuthenticated(false);
-    setLoading(false);
+  // axios.get("http://localhost:4000/api/v1/users/receptionHome",{
+  //   withCredentials:true,
+  // })
+  // .then(res=>{
+  //   setUser(res.data.user);
+  //   console.log(res.data.user);
+  //   // console.log(user)
+  //   setIsAuthenticatedReception(true);
+  //   // setIsAuthenticated(false);
+  //   setLoading(false);
 
-  })
-  .catch((error)=>{
-    console.log(error.response.data.message);
-    setUser({});
-    setIsAuthenticatedReception(false);
-    setLoading(false);
-  })
+  // })
+  // .catch((error)=>{
+  //   console.log(error.response.data.message);
+  //   setUser({});
+  //   setIsAuthenticatedReception(false);
+  //   setLoading(false);
+  // })
 /////////////////
 
 
@@ -259,7 +260,7 @@ function App() {
     <Route path="/prescription" element={<Prescription />} />
     <Route path="/pastrecords" element= {<Pastrecords/>}/>;
     <Route path="/appointments" element= {<Appointments/>}/>;
-    <Route path="/medical" element= {<Medical/>}/>;
+    {/* <Route path="/medical" element= {<Medical/>}/>; */}
     <Route path="/login" element= {<Login/>}/>;
     <Route path="/register" element= {<Register/>}/>;
     <Route path="/doctorlogin" element= {<Doctorlogin/>}/>;
@@ -277,9 +278,9 @@ function App() {
     <Route path="/nurselogin" element= {<NurseLogin/>}/>;
     <Route path="/nurseHome" element= {<NurseHome/>}/>;
 
-    {/* <Route path="/medicalPastrecord" element= {<MedicalPastRecord/>}/>;
+    {/* <Route path="/medicalPastrecord" element= {<MedicalPastRecord/>}/>; */}
     <Route path="/medicallogin" element= {<Medicallogin/>}/>;
-    <Route path="/medicalHome" element= {<MedicalHome/>}/>; */}
+    <Route path="/medicalHome" element= {<MedicalHome/>}/>;
 
     <Route path="/lablogin" element= {<Lablogin/>}/>;
     <Route path="/labHome" element= {<LabHome/>}/>;
@@ -289,6 +290,7 @@ function App() {
 
     <Route path="/apollologin" element= {<Apollologin/>}/>;
    </Routes> 
+   <Toaster/>
    </>
    
   );

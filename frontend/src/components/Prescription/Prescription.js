@@ -12,12 +12,19 @@ const handleSaveButtonClick=(event)=> {
   const canvas = document.getElementById("drawing-area")
   const image = canvas.toDataURL("image/png");
 
-  fetch('http://localhost:4000/api/v1/users/record', {
+  fetch('http://localhost:4000/api/v1/users/sendPastrecord', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ image: image})
+      body: JSON.stringify({ 
+        pfnumber:appointment.pfnumber,
+        firstname:appointment.firstname,
+        lastname:appointment.lastname,
+        doctorname:appointment.doctorname,
+        reg_no:appointment.reg_no,
+        image: image
+      })
   })
   .then(response => {
       if (response.ok) {

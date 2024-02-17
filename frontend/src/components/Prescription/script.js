@@ -43,7 +43,7 @@ let regDate="";
 if (appointment ) {
     drName = appointment.doctorname;
     // QueNo = appointment.queueNo;
-    pfNum = appointment.pfNumber;
+    pfNum = appointment.pfnumber;
     pName = appointment.firstname;
     // regDate = appointment.date;
 }

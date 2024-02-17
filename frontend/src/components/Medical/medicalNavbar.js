@@ -1,3 +1,4 @@
+
 import React, { useContext,useState } from 'react'
 // import Home from '../Not_login/home';
 // import PastRecord from './pastRecord';
@@ -5,16 +6,17 @@ import { NavLink, Navigate } from 'react-router-dom';
 // import './patientnavbar.css'
 import { Context } from '../..';
 import axios from 'axios';
-import toast from 'react-hot-toast';
 import logo from '../Navbar/logo.png'
+import toast from 'react-hot-toast';
 
-const ApolloNavbar = () => {
-  const { isAuthenticatedApollo, setIsAuthenticatedApollo , loading , setLoading} =  useContext(Context);
-  
-  
-  
-  
-  
+const MedicalNavbar = () => {
+  const {isAuthenticatedMedical ,  setIsAuthenticatedMedical , loading , setLoading} =  useContext(Context);
+   
+
+
+
+
+    
   const logoutHandler = async()=>{
     
     setLoading(true);
@@ -26,12 +28,12 @@ const ApolloNavbar = () => {
       )
       
       toast.success("Logged out succesfully");
-      setIsAuthenticatedApollo(false);
+      setIsAuthenticatedMedical(false);
       setLoading(false);
     }
     catch (error) {
       toast.error(error.response.data.message);
-      setIsAuthenticatedApollo(true);
+      setIsAuthenticatedMedical(true);
       setLoading(false);
     }
     
@@ -44,14 +46,11 @@ const ApolloNavbar = () => {
     
 //     <div className='navbar'>
 
-//       <NavLink className='com' to="/apolloHome"> Home</NavLink>
+//       <NavLink className='com' to="/labHome"> Home</NavLink>
 //       {/* <NavLink className='com' to="/doctorProfileDetail">Profile</NavLink> */}
 //       <button disabled={loading} onClick={logoutHandler}>Logout</button>
-//       <NavLink className='com' to="/apolloPastrecord"> Past Record</NavLink>
 
 //     </div>
-
-//   )
 
 
 const [isVisible,setIsVisible]=useState(true);
@@ -63,18 +62,16 @@ const handleProfileLogo = () => {
   } else {
     setIsVisible(!isVisible);
   }
-  
 };
 
-if(!isAuthenticatedApollo) {
+if(!isAuthenticatedMedical){
   return <Navigate to="/"/>
-}  
-
+}    
 return (
 <>
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid my-0">
-      <NavLink className="navbar-brand" to="/apolloHome">
+      <NavLink className="navbar-brand" to="/medicalHome">
         <div className="logo-cls">
           <img src={logo} alt="logo" width="40px" height="38px" />
           <h5 style={{ marginLeft: '10px', marginTop: '5px', background: 'linear-gradient(to right,  #84D25A, #0194B6)', WebkitBackgroundClip: 'text', color: 'transparent', fontFamily: 'Helvetica Neue' }}> <b> HEALTH CENTER</b></h5>
@@ -93,26 +90,17 @@ return (
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/apolloHome">
+         <ul className="navbar-nav ml-auto">
+         {/*} <li className="nav-item">
+            <NavLink className="nav-link active" aria-current="page" to="/doctorHome">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
             </NavLink>
           </li>
-          {/* <li className="nav-item">
-            <NavLink className="nav-link active" to="/loginAs">
-            <h5>Login</h5> 
-            </NavLink>
-          </li>
-          <li className="nav-item">
-            <NavLink className="nav-link active" to="/emailverification"/>
-            <h5>Signup</h5> 
-          </li> */}
           <li>
-            <NavLink className="nav-link active" to="/apolloPastRecord">
+            <NavLink className="nav-link active" to="/appointments">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
             </NavLink>
-          </li>
+          </li> */}
           { isVisible ? (
             <li className="nav-item dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{fontFamily: 'Helvetica Neue'}}>
@@ -146,7 +134,11 @@ return (
   </nav>
 </>
 );
+
+
+    
+//   )
 }
 
-export default ApolloNavbar ;
+export default MedicalNavbar;
 

@@ -1,17 +1,14 @@
-import React from 'react';
-import "./appointments.css";
-import { FaEye,FaSearch } from 'react-icons/fa';
-import { Link ,useNavigate} from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react'
+import MedicalNavbar from './medicalNavbar'
 import { Context } from '../..';
-import { Navigate } from 'react-router-dom';
-import {useState , useEffect, useContext} from 'react';
 import axios from 'axios';
-import Navbar from './doctorNavbar';
+import toast from 'react-hot-toast';
+import { FaEye,FaSearch } from 'react-icons/fa';
+import { Navigate, useNavigate } from 'react-router';
 
-
-const Appointments = () => {
+const MedicalHome = () => {
   
-  const {isAuthenticatedDoctor } = useContext(Context); 
+  const {isAuthenticatedMedical } = useContext(Context); 
   const [appointments,setAppointments]=useState([]);
   const [searchResults, setSearchResults] = useState(appointments);
   const navigate =useNavigate();
@@ -30,7 +27,7 @@ const Appointments = () => {
     let appoint= []
     useEffect(() => {
       
-      axios.get("http://localhost:4000/api/v1/users/getAppointmentsdoctor",{
+      axios.get("http://localhost:4000/api/v1/users/getAppointmentsmedical",{
         withCredentials:true,
       })
       .then(res=>{
@@ -77,14 +74,14 @@ const Appointments = () => {
         setSearchResults(resultsArray);
       };
       
-      if(!isAuthenticatedDoctor){
+      if(!isAuthenticatedMedical){
         return <Navigate to="/"/> ; 
       }
       
       
       return (
         <>
-    <Navbar/>
+    <MedicalNavbar/>
     <div className="page2">
     <section className='appointments'>
       <h2>Appointments</h2>
@@ -129,4 +126,4 @@ const Appointments = () => {
   );
 }
 
-export default Appointments
+export default MedicalHome

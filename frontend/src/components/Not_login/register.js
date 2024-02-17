@@ -117,7 +117,7 @@ export default function Register() {
           <FontAwesomeIcon icon={faEnvelope} />&nbsp;&nbsp;<input  name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' pattern=".+@iitk\.ac\.in" title="Please enter a IITK email address" style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
         </div>
         <div className='text-center my-2'>
-        <button id="click" type='submit' style={{border:'none',fontFamily: 'Helvetica Neue'}} >Sign Up</button>
+        <button disabled={loading} id="click" type='submit' style={{border:'none',fontFamily: 'Helvetica Neue'}} >Sign Up</button>
         </div>
         <div className='text-center my-2'>
           Already have an account?  <Link  to="/login" style={{fontFamily: 'Helvetica Neue'}} >Sign In</Link>
