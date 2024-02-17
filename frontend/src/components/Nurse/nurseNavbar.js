@@ -72,7 +72,7 @@ const NurseNavbar = () => {
       <>
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid my-0">
-      <NavLink className="navbar-brand" to="/labHome">
+      <NavLink className="navbar-brand" to="/nurseHome">
         <div className="logo-cls">
           <img src={logo} alt="logo" width="40px" height="38px" />
           <h5 style={{ marginLeft: '10px', marginTop: '5px', background: 'linear-gradient(to right,  #84D25A, #0194B6)', WebkitBackgroundClip: 'text', color: 'transparent', fontFamily: 'Helvetica Neue' }}> <b> HEALTH CENTER</b></h5>
@@ -93,7 +93,7 @@ const NurseNavbar = () => {
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/doctorHome">
+            <NavLink className="nav-link active" aria-current="page" to="/labHome">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
             </NavLink>
           </li>
@@ -107,7 +107,7 @@ const NurseNavbar = () => {
             <h5>Signup</h5> 
           </li> */}
           <li>
-            <NavLink className="nav-link active" to="/appointments">
+            <NavLink className="nav-link active" to="/nurseappointments">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
             </NavLink>
           </li>

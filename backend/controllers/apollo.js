@@ -28,6 +28,7 @@ export const getAppointmentsByApollo = async(req,res) =>{
   
     }
 
+
 export const addInApollo = async(req,res) =>{
       const{ pfnumber, doctorname , firstname , lastname,reg_no,imglink} = req.body;
         // console.log(req.headers.cookies);
@@ -66,6 +67,15 @@ export const updateApollo = async(req,res)=>{
                     // You can add more fields to update as needed
                 }
               };
+
+              const update1 = {
+                $set: {
+                    imglink:result.url,
+                    flag2: false
+                     // Update the status to 'cancelled', for example
+                    // You can add more fields to update as needed
+                }
+              };
             
             
             if(user){
@@ -73,7 +83,9 @@ export const updateApollo = async(req,res)=>{
                 {reg_no}, // Filter for finding the document
                 update2, // Update operation to apply
               );
-              await Record.findOneAndDelete({reg_no});
+              await Record.findOneAndUpdate({reg_no},
+                
+                update1,);
       
             }
             

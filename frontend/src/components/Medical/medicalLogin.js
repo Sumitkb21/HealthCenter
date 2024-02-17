@@ -9,7 +9,7 @@ import { faLock,faEnvelope} from '@fortawesome/free-solid-svg-icons';
 import { Context } from '../..';
 import Navbar from '../Navbar/navbar';
 
-export default function medicalLogin() {
+export default function MedicalLogin() {
      
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');

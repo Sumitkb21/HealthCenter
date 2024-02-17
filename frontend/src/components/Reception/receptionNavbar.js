@@ -107,8 +107,8 @@ const ReceptionNavbar = () => {
             <h5>Signup</h5> 
           </li> */}
           <li>
-            <NavLink className="nav-link active" to="/appointments">
-              <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
+            <NavLink className="nav-link active" to="/allappointments">
+              <h5 style={{fontFamily: 'Helvetica Neue'}}>Past Appointments</h5>
             </NavLink>
           </li>
           { isVisible ? (

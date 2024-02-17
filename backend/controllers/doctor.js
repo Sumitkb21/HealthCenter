@@ -5,6 +5,7 @@ import { Pastrecord } from "../models/PatientPastRecord.js";
 import { Record } from "../models/record.js";
 
 import {v2 as cloudinary} from 'cloudinary';          
+import { Appointments } from "../models/appointments.js";
 
           
 cloudinary.config({ 
@@ -14,38 +15,68 @@ cloudinary.config({
 });
 
 
-export const doctorreg  = async(req, res)=>{
-    const { firstname, lastname, email, password } = req.body; // distructering values from an object
-    let doc = await Doctor.findOne({ email });
+// export const doctorreg  = async(req, res)=>{
+//     const { firstname, lastname, email, password } = req.body; // distructering values from an object
+//     let doc = await Doctor.findOne({ email });
   
   
-    if (doc){ 
-        return res.status(404).json({
-        success: false,
-        message: "Doctor Already Exist",
-      });
+//     if (doc){ 
+//         return res.status(404).json({
+//         success: false,
+//         message: "Doctor Already Exist",
+//       });
     
-    }
+//     }
      
   
-    const hashedpassword = await bcrypt.hash(password, 10);
+//     const hashedpassword = await bcrypt.hash(password, 10);
   
-    doc = await Doctor.create({
-      firstname,
-      lastname,
-      email,
-      password: hashedpassword,
+//     doc = await Doctor.create({
+//       firstname,
+//       lastname,
+//       email,
+//       password: hashedpassword,
+//     });
+  
+//     send_cookies(doc, res, "Registered Succesfully", 201);
+       
+// }
+
+
+export const docRegister = async (req, res) => {
+  const { firstname, email, password , lastname } = req.body; // distructering values from an object
+  let doctor = await Doctor.findOne({ email });
+
+
+  if (doctor){ 
+      
+      return res.status(404).json({
+      success: false,
+      message: "Doctor Already Exist",
     });
   
-    send_cookies(doc, res, "Registered Succesfully", 201);
-       
-}
+  }
+   
+  console.log("herere")
+
+  const hashedpassword = await bcrypt.hash(password, 10);
+
+  doctor = await Doctor.create({
+    firstname,
+    lastname,
+    email,
+    password: hashedpassword,
+  });
+
+  send_cookies(doctor, res, "Registered Succesfully", 201);
+};
+
 
 
 export const doclogin = async (req, res) => {
     const { email, password } = req.body;
     const doctor = await Doctor.findOne({ email });
-    
+
     if (!doctor)
       return res.status(404).json({
         success: false,
@@ -122,6 +153,7 @@ export const sendPastrecord = async(req,res)=>{
         reg_no,
         imglink:result.url,
     });
+
       await Record.create({
         reg_no,
         firstname,
@@ -131,6 +163,7 @@ export const sendPastrecord = async(req,res)=>{
         imglink:result.url,
 
       });       
+      await Appointments.findOneAndDelete({reg_no});
       
       
 

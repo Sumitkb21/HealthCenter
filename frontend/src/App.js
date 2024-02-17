@@ -31,6 +31,8 @@ import NurseHome from './components/Nurse/nurseHome';
 import NurseLogin from './components/Nurse/nurseLogin';
 import Medicallogin from './components/Medical/medicalLogin'
 import MedicalHome from './components/Medical/medicalHome'
+import AllAppointments from './components/Reception/recpetionappointments';
+import NurseAppointments from './components/Nurse/nurseappointments';
 
 
 
@@ -289,6 +291,9 @@ function App() {
     <Route path="/apolloHome" element= {<ApolloHome/>}/>;
 
     <Route path="/apollologin" element= {<Apollologin/>}/>;
+    <Route path="/allappointments" element= {<AllAppointments/>}/>;
+    <Route path="/nurseappointments" element= {<NurseAppointments/>}/>;
+    
    </Routes> 
    <Toaster/>
    </>
