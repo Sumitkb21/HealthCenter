@@ -103,7 +103,6 @@ const defaultImage = () => {
     // else backgroundImage.src = appointment.imageURL
 }
 
-
 const lineWidth = 0.4; // Adjusted for a thinner pen-like stroke
 // const strokeStyle = 'black'; // Pen stroke color
 // const shadowColor ='#000';
