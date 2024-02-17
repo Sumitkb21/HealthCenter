@@ -3,6 +3,8 @@ import ReceptionNavbar from './receptionNavbar'
 import { Context } from '../..';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser,faHashtag } from '@fortawesome/free-solid-svg-icons';
 
 const ReceptionHome = () => {
   
@@ -59,10 +61,23 @@ const ReceptionHome = () => {
     return (
     <div>
       <ReceptionNavbar/>
+      <div className='reg'>
 
-    <h1 style={{ textAlign: "center" }}>Create Appointment </h1>  
-
-    <form onSubmit={submitHandler}>
+      <h2 style={{textAlign:'center',color:'white', fontFamily: 'Helvetica Neue'}}>Create Appointment</h2>
+      <form className='card' style={{ background:'#eeeeee'}} onSubmit={submitHandler}>
+      <div className='form my-4' style={{textAlign:'center'}}>    
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="text" name="pfnumber" onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF Number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+        </div>
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faUser} />&nbsp;&nbsp;<input type="text" name="doctorname"  value={doctorname} onChange={(e)=>{setDoctorname(e.target.value)} } placeholder='Doctor Name'style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+        </div>
+        <div className='text-center my-2'>
+          <button disabled={loading} id="click"  type='submit' style={{border:'none',fontFamily: 'Helvetica Neue' }} >Create Appointment</button> 
+        </div>
+      </div>
+    </form>
+    {/* <form onSubmit={submitHandler}>
     <div className='form' id='myform'>
 
       <input type="text" name="pfnumber" value={pfnumber} onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='Pfnumber' required /><br />
@@ -70,7 +85,8 @@ const ReceptionHome = () => {
       <button disabled={loading} type='submit' > Create Appointment</button>
       </div>
        
-    </form>    
+    </form>     */}
+    </div>
     </div>
   )
 }
