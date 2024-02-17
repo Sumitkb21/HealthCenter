@@ -105,7 +105,7 @@ return (
             <h5>Signup</h5> 
           </li> */}
           <li>
-            <NavLink className="nav-link active" to="/appointments">
+            <NavLink className="nav-link active" to="/labappointments">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
             </NavLink>
           </li>
