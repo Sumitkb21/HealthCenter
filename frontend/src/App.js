@@ -25,7 +25,7 @@ import axios from 'axios';
 import Apollologin from './components/Apollo/apolloLogin';
 import ApolloHome from './components/Apollo/apolloHome';
 import ApolloPastRecord from './components/Apollo/apollopastNavbar';
-import LabHome from './components/Lab/labNavbar';
+import LabHome from './components/Lab/labHome';
 import Lablogin from './components/Lab/Lablogin';
 import NurseHome from './components/Nurse/nurseHome';
 import NurseLogin from './components/Nurse/nurseLogin';

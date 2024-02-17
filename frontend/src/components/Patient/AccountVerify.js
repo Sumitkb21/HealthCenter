@@ -84,7 +84,7 @@ const EmailVerify = () => {
   }, [isVisible, remainingTime]);
 
     if(isVerify){
-      return <Navigate to="/register"/>
+      return <Navigate to="/register"  state={{ email: email }} />
     }
 
     const submitHandler2 = async(e)=>{

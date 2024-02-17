@@ -91,7 +91,7 @@ return (
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/doctorHome">
+            <NavLink className="nav-link active" aria-current="page" to="/labHome">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
             </NavLink>
           </li>
@@ -115,10 +115,10 @@ return (
                 Profile
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <NavLink className="dropdown-item" to="/Profile" style={{fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
-                <NavLink className="dropdown-item" to="/editProfile" style={{fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
+                <NavLink className="dropdown-item" to="/Profile" style={{color:'#212529',background:'white', fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
+                <NavLink className="dropdown-item" to="/editProfile" style={{color:'#212529',background:'white', fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item"  style={{fontFamily: 'Helvetica Neue'}} onClick={logoutHandler}>Logout</NavLink>
+                <NavLink className="dropdown-item"  style={{color:'#212529',background:'white', fontFamily: 'Helvetica Neue'}} onClick={logoutHandler}>Logout</NavLink>
               </div>
             </li>
             ):
@@ -129,8 +129,9 @@ return (
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" onClick={logoutHandler}>
-            <button  disabled={loading} style={{fontFamily: 'Helvetica Neue'}}>Logout</button>
+            <NavLink className="nav-link active"  disabled={loading} onClick={logoutHandler}>
+            {/* <button  style={{fontFamily: 'Helvetica Neue'}}>Logout</button> */}
+            <h5 style={{fontFamily: 'Helvetica Neue'}}>Logout</h5>
             </NavLink>
           </li>
             </>)

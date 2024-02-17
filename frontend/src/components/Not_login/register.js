@@ -10,26 +10,38 @@ import { Navigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser,faHashtag,faLock,faEnvelope,faCircleUser} from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../Navbar/navbar';
+import { useLocation } from 'react-router-dom';
 
 
 
 export default function Register() {
-    //  const history = useNavigate() ; 
+    //  const history = useNavigate() ;
+    const location = useLocation();
+    let email=location.state?.email; 
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [username, setUsername] = useState('');
     const [pfnumber, setPfnumber] = useState('');
     const [password, setPassword] = useState('');
-    const [email, setEmail] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const {isAuthenticated , setIsAuthenticated , loading , setLoading} =  useContext(Context);
 
     
 
     
     const submitHandler = async(e)=>{
-         
       e.preventDefault();
-      setLoading(true);   
+      setLoading(true); 
+      if(password.length <8){
+        toast.error("password should be atleast 8 length",{duration:1500});
+        setLoading(false);
+      }
+      else if(confirmPassword !== password){
+        toast.error("password does not match",{duration:1500});
+        setLoading(false);
+      }
+      else{
+        
       try {
        const {data} = await axios.post("http://localhost:4000/api/v1/users/register" , 
         {
@@ -48,7 +60,7 @@ export default function Register() {
         }
         )
         
-       toast.success(data.message);
+       toast.success(data.message,{duration:1500});
        setIsAuthenticated(true);
        setLoading(false);
     
@@ -59,11 +71,11 @@ export default function Register() {
 
         if(error.response){
           const {data} = error.response ;
-          toast.error(data.message);
+          toast.error(data.message,{duration:1500});
         }
           setLoading(false);
       }
-     
+    }
     };
 
 
@@ -111,10 +123,13 @@ export default function Register() {
           <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="text" name="pfnumber" value={pfnumber} onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF Number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
         </div>
         <div className='text-center my-2'>
-          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="password" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)} } placeholder='Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
+          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="password" name="password" title='password must contains atleast 8 character' value={password} onChange={(e)=>{setPassword(e.target.value)} } placeholder='Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
         </div>
         <div className='text-center my-2'>
-          <FontAwesomeIcon icon={faEnvelope} />&nbsp;&nbsp;<input  name="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='Email' pattern=".+@iitk\.ac\.in" title="Please enter a IITK email address" style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
+          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="password" name="password" value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)} } placeholder='Confirm Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false"  required /><br />
+        </div>
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faEnvelope} />&nbsp;&nbsp;<input  name="email" value={email}  disabled={true} style={{fontFamily: 'Helvetica Neue'}} required /><br />
         </div>
         <div className='text-center my-2'>
         <button disabled={loading} id="click" type='submit' style={{border:'none',fontFamily: 'Helvetica Neue'}} >Sign Up</button>
