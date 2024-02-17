@@ -3,6 +3,7 @@ import { Context } from '../..';
 import { Navigate } from 'react-router-dom';
 import Loader from '../loader';
 import Navbar from './Navbar/navbar';
+import './profile.css'
 const Profile = () => {
     const {isAuthenticated, loading , user } =  useContext(Context);
     
@@ -24,7 +25,13 @@ const Profile = () => {
     {loading ? <Loader/> :( 
     <div>
       <Navbar/>
-      <h1>This is your profile , you can check the other link also</h1>
+      <div className='reg'>      
+      <div className="quotes" style={{paddingTop:'50px',textAlign:'center'}}>
+          <p style={{textAlign:'center'}}>Your health is an investment, not an expense.</p>
+          <p style={{textAlign:'center'}}>Taking care of yourself is part of taking care of your patients.</p>
+          <p style={{textAlign:'center'}}>Your health is your most valuable asset. Take care of it</p>
+        </div>
+    </div>
     </div>
       )
     }
