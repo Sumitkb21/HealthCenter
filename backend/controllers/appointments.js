@@ -33,7 +33,15 @@ export const createAppointments = async(req,res)=>{
         doctorname,
         reg_no,
     })
+    
 
+     await AllAppointments.create({
+      firstname,
+      lastname,
+      pfnumber,
+      doctorname,
+      reg_no,
+  })
    if(appointment){
     res.status(200).json({
         success:true,
@@ -60,7 +68,15 @@ if(!token) return res.status(401).json({
 
 const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-const {firstname} = await Doctor.findById(decoded._id);
+
+const doc  = await Doctor.findById(decoded._id);
+if(!doc){
+  return res.status(400).json({
+    success: false,
+    message:"doctor not Authenticated",
+    });
+}
+const {firstname} = doc ;
 const appointments  = await Appointments.find({doctorname:firstname});
 
 res.status(200).json({

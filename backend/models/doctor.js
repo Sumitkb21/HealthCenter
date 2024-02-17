@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
 const schema = new mongoose.Schema({
-    firstname: String,
-    lastname: String,
+    firstname: {
+       type: String,
+    },
+    lastname: {
+        type: String,
+     },
     email:{
         type: String,
         unique: true,
@@ -22,4 +26,4 @@ const schema = new mongoose.Schema({
 
 
 
-export const Doctor = mongoose.model("doctors_database" , schema );
+export const Doctor = mongoose.model("doctors" , schema );

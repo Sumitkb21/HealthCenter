@@ -17,6 +17,7 @@ const handleSaveButtonClick=(event,savetype,user)=> {
   else if(user === "Medical" && savetype==="save1") path="notreferbymedical"
   else if(user === "Medical" && savetype==="save2") path="referbymedical"
   else if(user === "Apollo" ) path="updateApollo"
+  else if(user === "Nurse" ) path="updatebyNurse"
 
   fetch(`http://localhost:4000/api/v1/users/${path}`, {
       method: 'POST',

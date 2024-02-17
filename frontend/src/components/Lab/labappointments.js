@@ -1,14 +1,18 @@
-import React, { useContext, useEffect, useState } from 'react'
-import MedicalNavbar from './medicalNavbar'
-import { Context } from '../..';
-import axios from 'axios';
-import toast from 'react-hot-toast';
-import { FaEye,FaSearch } from 'react-icons/fa';
-import { Navigate, useNavigate } from 'react-router';
+import React from 'react';
 
-const MedicalPastRecord = () => {
+import { FaEye,FaSearch } from 'react-icons/fa';
+import { Link ,useNavigate} from 'react-router-dom';
+import { Context } from '../..';
+import { Navigate } from 'react-router-dom';
+import {useState , useEffect, useContext} from 'react';
+import axios from 'axios';
+
+import LabNavbar from './labNavbar';
+
+
+const LabAppointments = () => {
   
-  const {isAuthenticatedMedical } = useContext(Context); 
+  const {isAuthenticatedLab } = useContext(Context); 
   const [appointments,setAppointments]=useState([]);
   const [searchResults, setSearchResults] = useState(appointments);
   const navigate =useNavigate();
@@ -17,19 +21,24 @@ const MedicalPastRecord = () => {
   
   
   
-  
+  // const appointments = [
+    //     { doctorName: 'Dr. Smith', patientName: 'John Doe', queueNo: 'A001', pfNo: 'PF123', date: '2024-02-10', imageURL: "" },
+    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A002', pfNo: 'PF456', date: '2024-01-25', imageURL: "" },
+    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A003', pfNo: 'PF789', date: '2024-01-25' , imageURL: ""},
+    //     // Add more records as needed
+    // ];
     
-    let appoint= []
+    // let appoint= []
     useEffect(() => {
       
-      axios.get("http://localhost:4000/api/v1/users/medicalpastrecord",{
+      axios.get("http://localhost:4000/api/v1/users/getAppointmentsByLab",{
         withCredentials:true,
       })
       .then(res=>{
         // setUser(res.data.user);
         console.log(res.data.appointments);
-        appoint = res.data.appointments ;
-        setAppointments(appoint);
+        // appoint = res.data.appointments ;
+        setAppointments(res.data.appointments);
       // console.log(user)
       // setIsAuthenticatedReception(true);
       // setIsAuthenticated(false);
@@ -68,43 +77,15 @@ const MedicalPastRecord = () => {
         );
         setSearchResults(resultsArray);
       };
-
-        
-  const [showModal, setShowModal] = useState(false);
-  const [selectedImage, setSelectedImage] = useState(null);
-  
-  const openImage = async(imageURL) => {
-    await setShowModal(true);
-    await setSelectedImage(imageURL);
-  };
-  
-  const closeModal = () => {
-    console.log(selectedImage,showModal);
-    setShowModal(false);
-    setSelectedImage(null);
-  };
-  
-  const downloadFileFromURL=(url, fileName)=>{
-    fetch(url)
-    .then(response => response.blob())
-    .then(blob => {
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.download = fileName;
-      link.click();
-    })
-    .catch(error => console.error('Error downloading file:', error));
-  }
-  
       
-      if(!isAuthenticatedMedical){
+      if(!isAuthenticatedLab){
         return <Navigate to="/"/> ; 
       }
       
       
       return (
         <>
-    <MedicalNavbar/>
+    <LabNavbar/>
     <div className="page2">
     <section className='appointments'>
       <h2>Appointments</h2>
@@ -135,9 +116,7 @@ const MedicalPastRecord = () => {
                 className="view-prescription-button"
                 id="view-prescription"  
                 
-                // onClick={() => navigate('/prescription', {state: {appointment: appointment, user:"Medical"}})}
-                onClick={() => openImage(appointment.imglink)}
-
+                onClick={() => navigate('/prescription', {state: {appointment: appointment,user:"Lab"}})}
                 >
                 <FaEye /> View Prescription
             </button>
@@ -145,21 +124,10 @@ const MedicalPastRecord = () => {
           
         ))}
       </div>
-
-      {showModal && (
-                  <div className="mod">
-                     <div className="modal-content">
-                        <span className="close" onClick={closeModal}>&times;</span>
-                        <img src={selectedImage} alt="Selected" />
-                        <button className="downloadimg mt-2" type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> Save </button>
-                      </div>
-                      
-                 </div>
-                )}
     </section>
     </div>
     </>
   );
 }
 
-export default MedicalPastRecord;
+export default LabAppointments

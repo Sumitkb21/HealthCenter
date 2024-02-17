@@ -5,7 +5,7 @@ const LabHome = () => {
   return (
     <div>
       <LabNavbar/>
-      <h2>Lab home page</h2>
+      <div className='reg'></div>
     </div>
   )
 }

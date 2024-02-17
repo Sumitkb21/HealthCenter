@@ -72,7 +72,7 @@ const NurseNavbar = () => {
       <>
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <div className="container-fluid my-0">
-      <NavLink className="navbar-brand" to="/labHome">
+      <NavLink className="navbar-brand" to="/nurseHome">
         <div className="logo-cls">
           <img src={logo} alt="logo" width="40px" height="38px" />
           <h5 style={{ marginLeft: '10px', marginTop: '5px', background: 'linear-gradient(to right,  #84D25A, #0194B6)', WebkitBackgroundClip: 'text', color: 'transparent', fontFamily: 'Helvetica Neue' }}> <b> HEALTH CENTER</b></h5>
@@ -93,7 +93,7 @@ const NurseNavbar = () => {
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul className="navbar-nav ml-auto">
           <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/doctorHome">
+            <NavLink className="nav-link active" aria-current="page" to="/labHome">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
             </NavLink>
           </li>
@@ -107,7 +107,7 @@ const NurseNavbar = () => {
             <h5>Signup</h5> 
           </li> */}
           <li>
-            <NavLink className="nav-link active" to="/appointments">
+            <NavLink className="nav-link active" to="/nurseappointments">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
             </NavLink>
           </li>
@@ -117,10 +117,10 @@ const NurseNavbar = () => {
                 Profile
               </button>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <NavLink className="dropdown-item" to="/Profile" style={{fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
-                <NavLink className="dropdown-item" to="/editProfile" style={{fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
+                <NavLink className="dropdown-item" to="/Profile" style={{color:'#212529', background:'white',fontFamily: 'Helvetica Neue'}}> Profile</NavLink>
+                <NavLink className="dropdown-item" to="/editProfile" style={{color:'#212529', background:'white',fontFamily: 'Helvetica Neue'}} >Edit Profile</NavLink>
                 <div className="dropdown-divider"></div>
-                <NavLink className="dropdown-item"  style={{fontFamily: 'Helvetica Neue'}} onClick={logoutHandler}>Logout</NavLink>
+                <NavLink className="dropdown-item"  style={{color:'#212529', background:'white',fontFamily: 'Helvetica Neue'}} onClick={logoutHandler}>Logout</NavLink>
               </div>
             </li>
             ):
@@ -131,8 +131,9 @@ const NurseNavbar = () => {
             </NavLink>
           </li>
           <li className="nav-item">
-            <NavLink className="nav-link active" onClick={logoutHandler}>
-            <button  disabled={loading} style={{fontFamily: 'Helvetica Neue'}}>Logout</button>
+            <NavLink className="nav-link active" disabled={loading}  onClick={logoutHandler}>
+            {/* <button  disabled={loading} style={{fontFamily: 'Helvetica Neue'}}>Logout</button> */}
+            <h5 style={{fontFamily: 'Helvetica Neue'}}>Logout</h5>
             </NavLink>
           </li>
             </>)

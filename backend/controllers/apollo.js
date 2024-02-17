@@ -84,7 +84,8 @@ export const updateApollo = async(req,res)=>{
                 }
               };
 
-              const update1 = {
+
+                const update1 = {
                 $set: {
                     imglink:result.url,
                     flag2: false
@@ -93,8 +94,7 @@ export const updateApollo = async(req,res)=>{
                 }
               };
             
-            
-            if(user){
+             if(user){
               await Pastrecord.findOneAndUpdate(
                 {reg_no}, // Filter for finding the document
                 update2, // Update operation to apply

@@ -8,10 +8,15 @@ import { logout } from "../controllers/patient.js";
 import { otpsend, otpverify } from "../controllers/otp.js";
 import { apolloRegister, apollologin, labRegister, lablogin, medicalRegister, medicallogin, nurseRegister, nurselogin, receptionRegister, receptionlogin} from "../controllers/staff.js";
 import { createAppointments, getAppointmentsdoctor } from "../controllers/appointments.js";
-import { doclogin, doctorreg, sendPastrecord } from "../controllers/doctor.js";
+import { doclogin, docRegister, sendPastrecord } from "../controllers/doctor.js";
 import { addInApollo, getApolloPastRecord, getAppointmentsByApollo, updateApollo } from "../controllers/apollo.js";
-import { addInMedical, getAppointmentsmedical, getMedicalPastRecord, notreferbymedical, referbymedical } from "../controllers/medical.js";
+import { getAppointmentsmedical, getMedicalPastRecord, notreferbymedical, referbymedical } from "../controllers/medical.js";
 import { makeRecord } from "../controllers/record.js";
+import { addInMedical } from "../controllers/medical.js";
+
+import { getAppointmentsReception } from "../controllers/reception.js";
+import { getAppointmentsByNurse, updateByNurse } from "../controllers/nurse.js";
+import { getAppointmentsByLab } from "../controllers/lab.js";
 
 
 
@@ -29,7 +34,7 @@ router.post("/emailverify",otpsend);
 router.post("/otpverify",otpverify);
 
 
-router.post("/doctorregister" , doctorreg);
+router.post("/docRegisterister" , docRegister);
 router.post("/doctorlogin" , doclogin);
 
 router.post("/lablogin" , lablogin);
@@ -71,6 +76,8 @@ router.get("/nurseHome",isAuthenticatedNurse,getProfile);
 router.get("/getpastrecords", getPastrecord);
 router.post("/createAppointments",createAppointments);
 router.get("/getAppointmentsdoctor",getAppointmentsdoctor);
+router.get("/getAppointmentsReception",getAppointmentsReception);
+
 
 router.post("/addInApollo" , addInApollo);
 router.post("/addInMedical" ,addInMedical);
@@ -84,11 +91,15 @@ router.get("/medicalpastrecord" , getMedicalPastRecord);
 router.post("/updateApollo" , updateApollo);
 router.post("/referbymedical" , referbymedical);
 router.post("/notreferbymedical" , notreferbymedical);
+router.get("/getAppointmentsByNurse" , getAppointmentsByNurse);
+
 // router.post("/record" , makeRecord);
 
 
 
-//these are not checked 
+//these are not checked
+router.post("/updateByNurse" , updateByNurse);
+router.get("/getAppointmentsByLab" , getAppointmentsByLab);
 
 
 
