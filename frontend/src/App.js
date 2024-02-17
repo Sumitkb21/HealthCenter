@@ -288,7 +288,10 @@ function App() {
     <Route path="/apolloHome" element= {<ApolloHome/>}/>;
 
     <Route path="/apollologin" element= {<Apollologin/>}/>;
-   </Routes> 
+    
+      </Routes> 
+      <Toaster/>
+ 
    </>
    
   );
