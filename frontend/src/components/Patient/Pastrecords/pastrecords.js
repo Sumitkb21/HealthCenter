@@ -5,6 +5,7 @@ import {useState,useContext,useEffect } from 'react';
 import { Context } from '../../..';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from '../Navbar/navbar';
 
 
 const Pastrecords = () => {
@@ -93,6 +94,8 @@ const Pastrecords = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className='page1'>
               <section className='pastrecords' >
                 <h2>Past Records</h2>
@@ -126,6 +129,8 @@ const Pastrecords = () => {
                
               </section>
       </div>
+
+      </>
             
   );
 }

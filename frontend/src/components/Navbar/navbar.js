@@ -1,5 +1,5 @@
 
-import React ,{useContext}from "react";
+import React ,{useContext,useState}from "react";
 import { NavLink ,Navigate} from "react-router-dom";
 import logo from "./logo.png"
 import profile from "./profile.png";
@@ -79,20 +79,21 @@ export default function Navbar() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link active" to="/loginAs">
-                <h5>Login</h5> 
+                <NavLink className="nav-link active" aria-current="page" to="/loginAs">
+                <h5 style={{fontFamily: 'Helvetica Neue'}}>Login</h5> 
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link active" to="/emailverification"/>
-                <h5>Signup</h5> 
-              </li>
-              <li>
-                <NavLink className="nav-link active" to="/pastrecords">
-                  <h5 style={{fontFamily: 'Helvetica Neue'}}>Past Records</h5>
+                <NavLink className="nav-link active" aria-current="page" to="/emailverification">
+                <h5 style={{fontFamily: 'Helvetica Neue'}}>Signup</h5> 
                 </NavLink>
               </li>
-              { isVisible ? (
+              {/* <li className="nav-item">
+                <NavLink className="nav-link active" aria-current="page" to="/emailverification"/>
+                <h5 style={{fontFamily: 'Helvetica Neue'}}>Signup</h5> 
+              </li> */}
+              
+              {/* { isVisible ? (
                 <li className="nav-item dropdown">
                   <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{fontFamily: 'Helvetica Neue'}}>
                     Profile
@@ -117,7 +118,7 @@ export default function Navbar() {
                 </NavLink>
               </li>
                 </>)
-              }
+              } */}
 
             </ul>
           </div>

@@ -4,6 +4,8 @@ import Navbar from '../Navbar/navbar'
 import axios from "axios" ;
 import { Link, Navigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock,faHashtag} from '@fortawesome/free-solid-svg-icons';
 import LoginAs from '../Not_login/LoginAs';
 
 import { Context } from '../..';
@@ -62,20 +64,28 @@ export default function Login() {
 
     <Navbar/>
     {/* <LoginAs user="patient"/> */}
-    <h1 style={{ textAlign: "center" }}>Login Page</h1>  
 
-    <form onSubmit={submitHandler}>
-    <div className='form'>
 
-      <input type="text" name="pfnumber" value={pfnumber} onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF number' required /><br />
-      <input type="password" name="password" value={password} onChange={(e)=>{setPassword(e.target.value)} } placeholder='Password' required /><br />
 
-      <button disabled={loading} type='submit' > Submit</button>
-      <h1>OR</h1>
-      <Link to="/emailverfication"> Sign Up </Link>
+    <div className="reg" onSubmit={submitHandler}>
+      <h2 style={{textAlign:'center',color:'white', fontFamily: 'Helvetica Neue'}}>Login Form</h2>
+    <form className='card' style={{ background:'#eeeeee'}}>
+      <div className='form my-4' style={{textAlign:'center'}}>    
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="string" name="pfnumber" onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+        </div>
+        <div className='text-center my-2'>
+          <FontAwesomeIcon icon={faLock} />&nbsp;&nbsp;<input type="text" name="password" onChange={(e)=>{setPassword(e.target.value)} } placeholder='Password' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+        </div>
+        <div className='text-center my-2'>
+          <button disabled={loading} id="click"  type='submit' style={{border:'none',fontFamily: 'Helvetica Neue' }} >Sign In</button> 
+        </div>
+        <div className='text-center my-2'>
+          Create new account?  <Link  to="/emailverification" style={{fontFamily: 'Helvetica Neue'}}  >Sign Up</Link>
+        </div>
       </div>
-       
     </form>
+    </div>
     </>
   )
 }
