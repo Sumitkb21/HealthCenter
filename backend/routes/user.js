@@ -9,8 +9,8 @@ import { otpsend, otpverify } from "../controllers/otp.js";
 import { apolloRegister, apollologin, labRegister, lablogin, medicalRegister, medicallogin, nurseRegister, nurselogin, receptionRegister, receptionlogin} from "../controllers/staff.js";
 import { createAppointments, getAppointmentsdoctor } from "../controllers/appointments.js";
 import { doclogin, doctorreg, sendPastrecord } from "../controllers/doctor.js";
-import { addInApollo, updateApollo } from "../controllers/apollo.js";
-import { addInMedical, getAppointmentsmedical, notreferbymedical, referbymedical } from "../controllers/medical.js";
+import { addInApollo, getApolloPastRecord, getAppointmentsByApollo, updateApollo } from "../controllers/apollo.js";
+import { addInMedical, getAppointmentsmedical, getMedicalPastRecord, notreferbymedical, referbymedical } from "../controllers/medical.js";
 import { makeRecord } from "../controllers/record.js";
 
 
@@ -75,7 +75,12 @@ router.get("/getAppointmentsdoctor",getAppointmentsdoctor);
 router.post("/addInApollo" , addInApollo);
 router.post("/addInMedical" ,addInMedical);
 router.get("/getAppointmentsmedical" , getAppointmentsmedical);
+router.get("/getAppointmentsapollo" , getAppointmentsByApollo);
+
 router.post("/sendPastrecord" , sendPastrecord);
+router.get("/apollopastrecord" , getApolloPastRecord);
+router.get("/medicalpastrecord" , getMedicalPastRecord);
+
 router.post("/updateApollo" , updateApollo);
 router.post("/referbymedical" , referbymedical);
 router.post("/notreferbymedical" , notreferbymedical);

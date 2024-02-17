@@ -25,6 +25,7 @@ const redColorButton = document.getElementById('red-color-button');
 
 const data = document.getElementById('data');
 const details = data.getAttribute('data-user');
+const user = data.getAttribute('data-item');
 console.log(details);
 const appointment = JSON.parse(details);
 
@@ -87,9 +88,12 @@ backgroundImage.onload = function() {
         index=0;
     };
 
-// if(appointment && appointment.imageURL === "")
+if(user == "Doctor")
 backgroundImage.src = bg;
-// else backgroundImage.src = appointment.imageURL
+else {
+    console.log(appointment.imagelink);
+    backgroundImage.src = appointment.imglink;
+}
 
 const defaultImage = () => {
     var backgroundImage = new Image();
@@ -98,9 +102,13 @@ const defaultImage = () => {
         // if( appointment.imageURL === "")
         drawText();
     };
-    // if(appointment && appointment.imageURL === "")
+    
+    if(user == "Doctor")
     backgroundImage.src = bg;
-    // else backgroundImage.src = appointment.imageURL
+    else {
+        console.log(appointment.imagelink);
+        backgroundImage.src = appointment.imglink;
+    }   
 }
 
 const lineWidth = 0.4; // Adjusted for a thinner pen-like stroke

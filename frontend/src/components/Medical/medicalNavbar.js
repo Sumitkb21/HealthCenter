@@ -87,20 +87,21 @@ return (
         aria-label="Toggle navigation"
         onClick={handleProfileLogo}
       >
+        
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
          <ul className="navbar-nav ml-auto">
-         {/*} <li className="nav-item">
-            <NavLink className="nav-link active" aria-current="page" to="/doctorHome">
+         <li className="nav-item">
+            <NavLink className="nav-link active" aria-current="page" to="/medicalHome">
               <h5 style={{fontFamily: 'Helvetica Neue'}}>Home</h5>
             </NavLink>
           </li>
           <li>
-            <NavLink className="nav-link active" to="/appointments">
-              <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
+            <NavLink className="nav-link active" to="/medicalpastrecord">
+              <h5 style={{fontFamily: 'Helvetica Neue'}}>Past Record</h5>
             </NavLink>
-          </li> */}
+          </li> 
           { isVisible ? (
             <li className="nav-item dropdown">
               <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{fontFamily: 'Helvetica Neue'}}>

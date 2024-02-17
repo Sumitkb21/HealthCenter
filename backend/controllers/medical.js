@@ -27,6 +27,20 @@ export const getAppointmentsmedical = async(req,res) =>{
     });
   
 }
+export const getMedicalPastRecord = async(req,res) =>{
+  
+    // console.log(req.headers.cookies);
+    
+    
+    const appointments  = await MedicalPastrecord.find();
+    
+    res.status(200).json({
+    success: true,
+    message:"send succefully",
+    appointments,
+    });
+  
+}
 
 
 
@@ -35,7 +49,7 @@ export const getAppointmentsmedical = async(req,res) =>{
     export const referbymedical = async(req,res)=>{
         { 
             
-            const {pfnumber, flag1 , flag2,firstname,lastname,doctorname,imglink,image,reg_no} = req.body;
+            const {pfnumber,firstname,lastname,doctorname,reg_no,image} = req.body;
             
             cloudinary.uploader.upload(image,{public_id:"prescription"})
             .then(async(result)=>{
@@ -72,8 +86,17 @@ export const getAppointmentsmedical = async(req,res) =>{
                 { reg_no}, // Filter for finding the document
                 update1, // Update operation to apply
               );
-      
+              
+              await MedicalPastrecord.create({
+                pfnumber, doctorname, firstname, lastname, reg_no, imglink:result.url
+              });
+              
             }
+
+            res.status(200).json({
+            success: true,
+            message:"created succesfully",
+            });
             
             res.status(200).send({
               message: "success",
@@ -96,7 +119,7 @@ export const getAppointmentsmedical = async(req,res) =>{
     export const notreferbymedical = async(req,res)=>{
         { 
             
-            const {pfnumber, flag1 , flag2,firstname,lastname,doctorname,imglink,image , reg_no} = req.body;
+            const {pfnumber,firstname,lastname,doctorname,reg_no,image} = req.body;
             
             cloudinary.uploader.upload(image,{public_id:"prescription"})
             .then(async(result)=>{
@@ -150,7 +173,7 @@ export const getAppointmentsmedical = async(req,res) =>{
       }
       
 export const addInMedical = async(req,res) =>{
-        const{ pfnumber, doctorname , firstname , lastname,reg_no,imglink} = req.body;
+        const{ pfnumber,  firstname , lastname ,doctorname, reg_no,imglink} = req.body;
           // console.log(req.headers.cookies);
           
           
@@ -162,6 +185,7 @@ export const addInMedical = async(req,res) =>{
           success: true,
           message:"created succesfully",
           });
+
         
   }
   

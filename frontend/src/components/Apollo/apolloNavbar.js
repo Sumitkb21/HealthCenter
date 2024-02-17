@@ -110,7 +110,7 @@ return (
           </li> */}
           <li>
             <NavLink className="nav-link active" to="/apolloPastRecord">
-              <h5 style={{fontFamily: 'Helvetica Neue'}}>Appointments</h5>
+              <h5 style={{fontFamily: 'Helvetica Neue'}}>Past Record</h5>
             </NavLink>
           </li>
           { isVisible ? (

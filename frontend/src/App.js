@@ -24,13 +24,14 @@ import { Context } from '.';
 import axios from 'axios';
 import Apollologin from './components/Apollo/apolloLogin';
 import ApolloHome from './components/Apollo/apolloHome';
-import ApolloPastRecord from './components/Apollo/apollopastNavbar';
+import ApolloPastRecord from './components/Apollo/apollopastRecord';
 import LabHome from './components/Lab/labNavbar';
 import Lablogin from './components/Lab/Lablogin';
 import NurseHome from './components/Nurse/nurseHome';
 import NurseLogin from './components/Nurse/nurseLogin';
 import Medicallogin from './components/Medical/medicalLogin'
 import MedicalHome from './components/Medical/medicalHome'
+import MedicalPastRecord from './components/Medical/medicalPastRecord';
 
 
 
@@ -281,11 +282,12 @@ function App() {
     {/* <Route path="/medicalPastrecord" element= {<MedicalPastRecord/>}/>; */}
     <Route path="/medicallogin" element= {<Medicallogin/>}/>;
     <Route path="/medicalHome" element= {<MedicalHome/>}/>;
+    <Route path="/medicalpastrecord" element= {<MedicalPastRecord/>}/>;
 
     <Route path="/lablogin" element= {<Lablogin/>}/>;
     <Route path="/labHome" element= {<LabHome/>}/>;
     
-    <Route path="/apolloPastrecord" element= {<ApolloPastRecord/>}/>;
+    <Route path="/apollopastrecord" element= {<ApolloPastRecord/>}/>;
     <Route path="/apolloHome" element= {<ApolloHome/>}/>;
 
     <Route path="/apollologin" element= {<Apollologin/>}/>;

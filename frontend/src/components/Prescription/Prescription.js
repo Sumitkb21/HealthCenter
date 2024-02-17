@@ -1,18 +1,24 @@
 import React, { useEffect } from 'react';
 import UpadateCanvas from "./script"
 import  './prescription.css';
-import { useLocation,useNavigate } from 'react-router-dom';
+import { useLocation,useNavigate, useResolvedPath } from 'react-router-dom';
 
 
 const Prescription = ( ) => {
 
   
-const handleSaveButtonClick=(event)=> {
+const handleSaveButtonClick=(event,savetype,user)=> {
   event.preventDefault();
   const canvas = document.getElementById("drawing-area")
   const image = canvas.toDataURL("image/png");
 
-  fetch('http://localhost:4000/api/v1/users/sendPastrecord', {
+  let path;
+  if(user ==="Doctor") path="sendPastrecord";
+  else if(user === "Medical" && savetype==="save1") path="notreferbymedical"
+  else if(user === "Medical" && savetype==="save2") path="referbymedical"
+  else if(user === "Apollo" ) path="updateApollo"
+
+  fetch(`http://localhost:4000/api/v1/users/${path}`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'
@@ -44,6 +50,7 @@ const handleSaveButtonClick=(event)=> {
   
 
   let appointment = location.state?.appointment;
+  let user = location.state?.user;
 
   useEffect(() => {
     appointment = location.state?.appointment;
@@ -52,14 +59,15 @@ const handleSaveButtonClick=(event)=> {
       // Navigate to /appointments
       // Add your navigation logic here
       console.log(appointment);
-      navigate('/appointments');
+      // navigate('/appointments');
+      navigate(-1);
     }
-    if(appointment && appointment.imageURL !== "")  document.getElementById("undo-button").style.display = "none";
+    if(user !== "Doctor")  document.getElementById("undo-button").style.display = "none";
     UpadateCanvas();
   }, [location]);
     return (
     <>
-    <p id='data' data-user = {JSON.stringify(appointment)}>
+    <p id='data' data-user = {JSON.stringify(appointment) }  data-item={user}>
     </p>
       <div className="container">
         <div className="menu">
@@ -82,8 +90,20 @@ const handleSaveButtonClick=(event)=> {
         {/* </div> */}
         <canvas id="drawing-area" className="drawing-area" height="800" width="600"></canvas>
         <div className="action" style={{ textAlign: 'center' }}>
-          <button id="clear-button" className="clear-button mt-2" type="button" style={{ borderRadius: '5px', backgroundColor: 'red' , border: 'transparent' }}>Clear</button>&nbsp;&nbsp;
-          <button id="save-button" className="save-button mt-2" type="button" onClick={handleSaveButtonClick} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Save</button>
+          
+          {user === 'Medical' ? (
+            <>
+              <button id="clear-button" className="clear-button mt-2" type="button" style={{ borderRadius: '5px', backgroundColor: 'red' , border: 'transparent' }}>Clear</button>&nbsp;&nbsp;
+              <button id="save-button-1" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save1',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Save</button>
+              <button id="save-button-2" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save2',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Refer to Apollo</button>
+            </>
+          ) : (
+            <>
+            <button id="clear-button" className="clear-button mt-2" type="button" style={{ borderRadius: '5px', backgroundColor: 'red' , border: 'transparent' }}>Clear</button>&nbsp;&nbsp;
+            <button id="save-button" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'default',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Save</button>
+            </>
+          )}
+
         </div>
       </div>
     </>

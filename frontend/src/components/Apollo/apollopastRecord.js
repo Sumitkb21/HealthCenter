@@ -1,17 +1,15 @@
-import React from 'react';
-import "./appointments.css";
-import { FaEye,FaSearch } from 'react-icons/fa';
-import { Link ,useNavigate} from 'react-router-dom';
+
+import React, { useContext, useEffect, useState } from 'react'
+import ApolloNavbar from './apolloNavbar'
 import { Context } from '../..';
-import { Navigate } from 'react-router-dom';
-import {useState , useEffect, useContext} from 'react';
 import axios from 'axios';
-import Navbar from './doctorNavbar';
+import toast from 'react-hot-toast';
+import { FaEye,FaSearch } from 'react-icons/fa';
+import { Navigate, useNavigate } from 'react-router';
 
-
-const Appointments = () => {
+const ApolloPastRecord = () => {
   
-  const {isAuthenticatedDoctor } = useContext(Context); 
+ const {isAuthenticatedApollo } = useContext(Context); 
   const [appointments,setAppointments]=useState([]);
   const [searchResults, setSearchResults] = useState(appointments);
   const navigate =useNavigate();
@@ -20,17 +18,12 @@ const Appointments = () => {
   
   
   
-  // const appointments = [
-    //     { doctorName: 'Dr. Smith', patientName: 'John Doe', queueNo: 'A001', pfNo: 'PF123', date: '2024-02-10', imageURL: "" },
-    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A002', pfNo: 'PF456', date: '2024-01-25', imageURL: "" },
-    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A003', pfNo: 'PF789', date: '2024-01-25' , imageURL: ""},
-    //     // Add more records as needed
-    // ];
+  
     
     let appoint= []
     useEffect(() => {
       
-      axios.get("http://localhost:4000/api/v1/users/getAppointmentsdoctor",{
+      axios.get("http://localhost:4000/api/v1/users/apollopastrecord",{
         withCredentials:true,
       })
       .then(res=>{
@@ -77,14 +70,14 @@ const Appointments = () => {
         setSearchResults(resultsArray);
       };
       
-      if(!isAuthenticatedDoctor){
+      if(!isAuthenticatedApollo){
         return <Navigate to="/"/> ; 
       }
       
       
       return (
         <>
-    <Navbar/>
+    <ApolloNavbar/>
     <div className="page2">
     <section className='appointments'>
       <h2>Appointments</h2>
@@ -115,7 +108,7 @@ const Appointments = () => {
                 className="view-prescription-button"
                 id="view-prescription"  
                 
-                onClick={() => navigate('/prescription', {state: {appointment: appointment, user:"Doctor"}})}
+                onClick={() => navigate('/prescription', {state: {appointment: appointment, user:"Apollo"}})}
                 >
                 <FaEye /> View Prescription
             </button>
@@ -126,7 +119,7 @@ const Appointments = () => {
     </section>
     </div>
     </>
-  );
+      )
 }
 
-export default Appointments
+export default ApolloPastRecord;

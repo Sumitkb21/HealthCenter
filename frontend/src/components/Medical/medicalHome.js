@@ -17,12 +17,7 @@ const MedicalHome = () => {
   
   
   
-  // const appointments = [
-    //     { doctorName: 'Dr. Smith', patientName: 'John Doe', queueNo: 'A001', pfNo: 'PF123', date: '2024-02-10', imageURL: "" },
-    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A002', pfNo: 'PF456', date: '2024-01-25', imageURL: "" },
-    //     { doctorName: 'Dr. Johnson', patientName: 'Jane Smith', queueNo: 'A003', pfNo: 'PF789', date: '2024-01-25' , imageURL: ""},
-    //     // Add more records as needed
-    // ];
+  
     
     let appoint= []
     useEffect(() => {
@@ -112,7 +107,7 @@ const MedicalHome = () => {
                 className="view-prescription-button"
                 id="view-prescription"  
                 
-                onClick={() => navigate('/prescription', {state: {appointment: appointment}})}
+                onClick={() => navigate('/prescription', {state: {appointment: appointment, user:"Medical"}})}
                 >
                 <FaEye /> View Prescription
             </button>

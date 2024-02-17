@@ -21,8 +21,9 @@ export const createAppointments = async(req,res)=>{
 
 
     const {firstname, lastname} = patient ;
-    const users = AllAppointments.find();
-    const reg_no  = users.length + 1;
+    const users = AllAppointments.length;
+    const reg_no  = users + 1;
+    console.log(reg_no)
 
 
     const appointment =  await Appointments.create({
