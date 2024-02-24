@@ -54,7 +54,7 @@ if (appointment ) {
 // const pName="SNEHA";
 // const regNum="12H23";
 // const regDate="1/2/2003";
-const drName_txt = `Name : ${drName}`;
+const drName_txt = `Dr. Name : ${drName}`;
 const QueNo_txt = `Que No. : ${QueNo}`;
 const pfNum_txt = `pf no. : ${pfNum}`;
 const pName_txt = `patient Name: ${pName}`;
@@ -88,7 +88,7 @@ backgroundImage.onload = function() {
         index=0;
     };
 
-if(user == "Doctor")
+if(user === "Doctor")
 backgroundImage.src = bg;
 else {
     console.log(appointment.imagelink);
@@ -103,7 +103,7 @@ const defaultImage = () => {
         drawText();
     };
     
-    if(user == "Doctor")
+    if(user === "Doctor")
     backgroundImage.src = bg;
     else {
         console.log(appointment.imagelink);
@@ -175,7 +175,8 @@ function handleDrawingEnd(event) {
     state.mousedown = false;
     state.points = [];
     if(event.type !== 'mouseout'){
-        if( appointment.imageURL === "") restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        //if(user === "Doctor")
+         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         index+=1;
     }
 }
