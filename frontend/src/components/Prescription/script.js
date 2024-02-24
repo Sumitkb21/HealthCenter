@@ -41,13 +41,16 @@ let pName="";
 let regNum = "";
 let regDate="";
 
+let month = appointment.createdAt.substring(5,7); 
+let year = appointment.createdAt.substring(0,4); 
+let day = appointment.createdAt.substring(8,10);
 if (appointment ) {
     drName = appointment.doctorname;
     // QueNo = appointment.queueNo;
     pfNum = appointment.pfnumber;
     pName = appointment.firstname;
     regNum = appointment.reg_no;
-    // regDate = appointment.date;
+    regDate = day + "-" + month +"-" + year;
 }
 // const drName = "Dr. Sumit Bhadwa"
 // const QueNo ="29";
@@ -55,7 +58,7 @@ if (appointment ) {
 // const pName="SNEHA";
 // const regNum="12H23";
 // const regDate="1/2/2003";
-const drName_txt = `Name : ${drName}`;
+const drName_txt = `Dr. Name : ${drName}`;
 const QueNo_txt = `Que No. : ${QueNo}`;
 const pfNum_txt = `pf no. : ${pfNum}`;
 const pName_txt = `patient Name: ${pName}`;
@@ -89,7 +92,8 @@ backgroundImage.onload = function() {
         index=0;
     };
 
-if(user == "Doctor" || user == "Reception")
+if(user === "Doctor" || user === "Reception")
+  
 backgroundImage.src = bg;
 else if(appointment && (user !== "Doctor" || user !== "Reception")){
     // console.log(appointment.imagelink);
@@ -179,6 +183,8 @@ function handleDrawingEnd(event) {
     state.points = [];
     if(event.type !== 'mouseout'){
         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        //if(user === "Doctor")
+         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         index+=1;
     }
 }

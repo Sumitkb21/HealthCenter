@@ -116,7 +116,7 @@ export const getMedicalPastRecord = async(req,res) =>{
   
       
 
-    export const notreferbymedical = async(req,res)=>{
+export const notreferbymedical = async(req,res)=>{
         { 
             
             const {pfnumber,firstname,lastname,doctorname,reg_no,image} = req.body;
