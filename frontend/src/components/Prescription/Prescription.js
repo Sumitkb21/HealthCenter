@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import UpadateCanvas from "./script"
 import  './prescription.css';
 import { useLocation,useNavigate, useResolvedPath } from 'react-router-dom';
+import toast from 'react-hot-toast';
+
 
 
 const Prescription = ( ) => {
@@ -35,14 +37,17 @@ const handleSaveButtonClick=(event,savetype,user)=> {
   })
   .then(response => {
       if (response.ok) {
-          alert('Image uploaded successfully');
+          // alert('Image uploaded successfully');
           // You can perform any additional actions here after successful upload
+          toast.success('Image uploaded successfully')
       } else {
-          throw new Error('Failed to upload image');
+          // throw new Error('Failed to upload image');
+          toast.error('Failed to upload image');
       }
   })
   .catch(error => {
-      console.error('Error uploading image:', error);
+      // console.error('Error uploading image:', error);
+      toast.error('Error uploading image:' + error);
       // Handle error, show error message, etc.
   });
 }

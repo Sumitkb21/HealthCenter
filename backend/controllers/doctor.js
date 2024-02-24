@@ -161,19 +161,18 @@ export const sendPastrecord = async(req,res)=>{
         pfnumber,
         doctorname,
         imglink:result.url,
-
       });       
-      await Appointments.findOneAndDelete({reg_no});
+      await Appointments.deleteOne({ reg_no }); // Use deleteOne instead of findOneAndDelete
       
       
 
       res.status(200).send({
-        message: "success",
+        message: "Prescription submitted successfully",
         result
        });
       }).catch((error) => {
        res.status(500).send({
-        message: "failure",
+        message: "Failed to upload",
         error
        });
       });

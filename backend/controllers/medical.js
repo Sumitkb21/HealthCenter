@@ -95,16 +95,16 @@ export const getMedicalPastRecord = async(req,res) =>{
 
             res.status(200).json({
             success: true,
-            message:"created succesfully",
+            message:"Referred to Apollo",
             });
             
             res.status(200).send({
-              message: "success",
+              message: "Referred to Apollo",
               result
              });
             }).catch((error) => {
              res.status(500).send({
-              message: "failure",
+              message: "Failed to submit",
               error
              });
             });
@@ -156,17 +156,21 @@ export const getMedicalPastRecord = async(req,res) =>{
                 { reg_no}, // Filter for finding the document
                 update1, // Update operation to apply
               );
+
+              await MedicalPastrecord.create({
+                pfnumber, doctorname, firstname, lastname, reg_no, imglink:result.url
+              });
       
             }
             
             res.status(200).send({
-              message: "success",
+              message: "Referred to Apollo",
               result
              });
             }).catch((error) => {
              res.status(500).send({
-              message: "failure",
-              error
+              message: "Failed to submit",
+              errors
              });
             });
         }
