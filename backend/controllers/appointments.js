@@ -16,6 +16,13 @@ export const createAppointments = async(req,res)=>{
       message: "Patient not registered",
     })
     }
+    const doc =  await Doctor.findOne({firstname:doctorname})
+    if(!doc){
+      return res.status(400).json({
+      success:false,
+      message: "Doctor doesn't exist !!",
+    })
+    }
 
 
 
