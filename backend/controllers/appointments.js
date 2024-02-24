@@ -33,6 +33,16 @@ export const createAppointments = async(req,res)=>{
         doctorname,
         reg_no,
     })
+
+    
+  //   const record =  await Pastrecord.create({
+  //     firstname,
+  //     lastname,
+  //     pfnumber,
+  //     doctorname,
+  //     reg_no,
+  //     imglink:"",
+  // });
     
 
      await AllAppointments.create({

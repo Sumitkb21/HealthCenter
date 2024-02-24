@@ -67,7 +67,7 @@ const ReceptionHome = () => {
       <form className='card' style={{ background:'#eeeeee'}} onSubmit={submitHandler}>
       <div className='form my-4' style={{textAlign:'center'}}>    
         <div className='text-center my-2'>
-          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="text" name="pfnumber" onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF Number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
+          <FontAwesomeIcon icon={faHashtag} />&nbsp;&nbsp;<input type="text" name="pfnumber" value={pfnumber} onChange={(e)=>{setPfnumber(e.target.value)} } placeholder='PF Number' style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
         </div>
         <div className='text-center my-2'>
           <FontAwesomeIcon icon={faUser} />&nbsp;&nbsp;<input type="text" name="doctorname"  value={doctorname} onChange={(e)=>{setDoctorname(e.target.value)} } placeholder='Doctor Name'style={{fontFamily: 'Helvetica Neue'}} spellcheck="false" /><br />
