@@ -60,6 +60,7 @@ const handleSaveButtonClick=(event,savetype,user)=> {
 
   useEffect(() => {
     appointment = location.state?.appointment;
+    user = location.state?.user;
     
     if (!appointment) {
       // Navigate to /appointments
@@ -69,8 +70,16 @@ const handleSaveButtonClick=(event,savetype,user)=> {
       navigate(-1);
     }
     if(user !== "Doctor")  document.getElementById("undo-button").style.display = "none";
+    if(user == "Reception"){
+      document.getElementById("save-button").style.display = "none";
+      document.getElementById("clear-button").style.display = "none";
+      Array.from(document.getElementsByClassName("color-button")).forEach(button => {
+        button.style.display = "none";
+      });
+
+    } 
     UpadateCanvas();
-  }, [location]);
+  }, [location,appointment,user]);
     return (
     <>
     <p id='data' data-user = {JSON.stringify(appointment) }  data-item={user}>

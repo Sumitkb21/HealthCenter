@@ -36,6 +36,8 @@ import AllAppointments from './components/Reception/recpetionappointments';
 import NurseAppointments from './components/Nurse/nurseappointments';
 import LabAppointments from './components/Lab/labappointments';
 
+import NotFound from './components/Notfound';
+
 
 
 function App() {
@@ -297,6 +299,9 @@ function App() {
     <Route path="/allappointments" element= {<AllAppointments/>}/>;
     <Route path="/nurseappointments" element= {<NurseAppointments/>}/>;
     <Route path="/labappointments" element= {<LabAppointments/>}/>;
+
+
+    <Route path="*" element={<NotFound />} />
 
    </Routes> 
    <Toaster/>

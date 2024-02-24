@@ -91,8 +91,8 @@ backgroundImage.onload = function() {
 
 if(user == "Doctor" || user == "Reception")
 backgroundImage.src = bg;
-else {
-    console.log(appointment.imagelink);
+else if(appointment && (user !== "Doctor" || user !== "Reception")){
+    // console.log(appointment.imagelink);
     backgroundImage.src = appointment.imglink;
 }
 
@@ -106,8 +106,8 @@ const defaultImage = () => {
     
     if(user == "Doctor" || user == "Reception")
     backgroundImage.src = bg;
-    else {
-        console.log(appointment.imagelink);
+    else if(appointment && (user !== "Doctor" || user !== "Reception")){
+        // console.log(appointment.imagelink);
         backgroundImage.src = appointment.imglink;
     }   
 }
@@ -119,14 +119,16 @@ const shadowBlur =0.7;
 blackColorButton.style.border = "2px solid black";
 blackColorButton.style.borderRadius = "7px";
 
-canvas.addEventListener('mousedown', handleWritingStart);
-canvas.addEventListener('mousemove', handleWritingInProgress);
-canvas.addEventListener('mouseup', handleDrawingEnd);
-canvas.addEventListener('mouseout', handleDrawingEnd);
+if (user !== "Reception") {
+    canvas.addEventListener('mousedown', handleWritingStart);
+    canvas.addEventListener('mousemove', handleWritingInProgress);
+    canvas.addEventListener('mouseup', handleDrawingEnd);
+    canvas.addEventListener('mouseout', handleDrawingEnd);
 
-canvas.addEventListener('touchstart', handleWritingStart);
-canvas.addEventListener('touchmove', handleWritingInProgress);
-canvas.addEventListener('touchend', handleDrawingEnd);
+    canvas.addEventListener('touchstart', handleWritingStart);
+    canvas.addEventListener('touchmove', handleWritingInProgress);
+    canvas.addEventListener('touchend', handleDrawingEnd);
+}
 
 undoButton.addEventListener('click',handleUndoButtonClick);
 clearButton.addEventListener('click', handleClearButtonClick);
