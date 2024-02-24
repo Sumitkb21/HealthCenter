@@ -107,7 +107,7 @@ const MedicalPastRecord = () => {
     <MedicalNavbar/>
     <div className="page2">
     <section className='appointments'>
-      <h2>Appointments</h2>
+      <h2>Past Records</h2>
       <div className="appointment-container">
 
       <form className="search" onSubmit={handleSubmit}>

@@ -42,7 +42,7 @@ const ReceptionHome = () => {
         }
         catch (error) {
            toast.error(error.response.data.message);
-           setIsAuthenticatedReception(false);
+          //  setIsAuthenticatedReception(false);
            setLoading(false);
       
         }

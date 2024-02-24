@@ -58,12 +58,12 @@ export const updateByNurse  = async(req, res)=> {
       );
     
     res.status(200).send({
-      message: "success",
+      message: "Submitted successfully",
       result
      });
     }).catch((error) => {
      res.status(500).send({
-      message: "failure",
+      message: "Failed to submit",
       error
      });
     });

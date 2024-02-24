@@ -20,10 +20,10 @@ export const createAppointments = async(req,res)=>{
 
 
 
-    const {firstname, lastname} = patient ;
-    const users = AllAppointments.length;
-    const reg_no  = users + 1;
-    console.log(reg_no)
+    const { firstname, lastname } = patient;
+    const users = await AllAppointments.countDocuments();
+    const reg_no = users + 1;
+    console.log(users);
 
 
     const appointment =  await Appointments.create({

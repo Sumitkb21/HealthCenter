@@ -38,7 +38,7 @@ let drName="";
 let QueNo="";
 let pfNum="";
 let pName="";
-let regNum = "12H23";
+let regNum = "";
 let regDate="";
 
 if (appointment ) {
@@ -46,6 +46,7 @@ if (appointment ) {
     // QueNo = appointment.queueNo;
     pfNum = appointment.pfnumber;
     pName = appointment.firstname;
+    regNum = appointment.reg_no;
     // regDate = appointment.date;
 }
 // const drName = "Dr. Sumit Bhadwa"
@@ -88,7 +89,7 @@ backgroundImage.onload = function() {
         index=0;
     };
 
-if(user == "Doctor")
+if(user == "Doctor" || user == "Reception")
 backgroundImage.src = bg;
 else {
     console.log(appointment.imagelink);
@@ -103,7 +104,7 @@ const defaultImage = () => {
         drawText();
     };
     
-    if(user == "Doctor")
+    if(user == "Doctor" || user == "Reception")
     backgroundImage.src = bg;
     else {
         console.log(appointment.imagelink);
@@ -175,7 +176,7 @@ function handleDrawingEnd(event) {
     state.mousedown = false;
     state.points = [];
     if(event.type !== 'mouseout'){
-        if( appointment.imageURL === "") restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         index+=1;
     }
 }
