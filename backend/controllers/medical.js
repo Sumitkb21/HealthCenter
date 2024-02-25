@@ -54,7 +54,7 @@ export const getMedicalPastRecord = async(req,res) =>{
             cloudinary.uploader.upload(image,{public_id:"prescription"})
             .then(async(result)=>{
             // console.log(result.url);
-            const user = await Record.find({reg_no});
+            // const user = await Record.find({reg_no});
             
             
             const update1 = {
@@ -77,7 +77,7 @@ export const getMedicalPastRecord = async(req,res) =>{
               };
             
             
-            if(user){
+            // if(user){
               await Pastrecord.findOneAndUpdate(
                 {reg_no}, // Filter for finding the document
                 update2, // Update operation to apply
@@ -87,11 +87,23 @@ export const getMedicalPastRecord = async(req,res) =>{
                 update1, // Update operation to apply
               );
               
+
+              const patient  = await MedicalPastrecord.findOne({reg_no}); 
+              if(!patient){ 
               await MedicalPastrecord.create({
                 pfnumber, doctorname, firstname, lastname, reg_no, imglink:result.url
               });
+              }
+              else{
+                await MedicalPastrecord.findOneAndUpdate(
+                  {reg_no}, // Filter for finding the document
+                  update2, // Update operation to apply
+                );      
+              }
+
+            
               
-            }
+            // }
 
             res.status(200).json({
             success: true,
@@ -157,9 +169,19 @@ export const notreferbymedical = async(req,res)=>{
                 update1, // Update operation to apply
               );
 
+              const patient  = await MedicalPastrecord.findOne({reg_no}); 
+              if(!patient ){ 
               await MedicalPastrecord.create({
                 pfnumber, doctorname, firstname, lastname, reg_no, imglink:result.url
               });
+              }
+              else{
+                await MedicalPastrecord.findOneAndUpdate(
+                  {reg_no}, // Filter for finding the document
+                  update2, // Update operation to apply
+                );      
+              }
+
       
             }
             
