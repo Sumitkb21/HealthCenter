@@ -103,9 +103,23 @@ export const updateApollo = async(req,res)=>{
                 
                 update1,);
 
-              await ApolloPastrecord.create({
+
+
+              
+               
+              const patient  = await ApolloPastrecord.findOne({reg_no}); 
+              if(!patient){ 
+                await ApolloPastrecord.create({
                   pfnumber, doctorname, firstname, lastname, reg_no, imglink:result.url
-              });
+              });   
+            }
+              else{
+                await ApolloPastrecord.findOneAndUpdate(
+                  {reg_no}, // Filter for finding the document
+                  update2, // Update operation to apply
+                );      
+              }
+
       
             }
             

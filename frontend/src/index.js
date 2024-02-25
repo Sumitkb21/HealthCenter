@@ -21,7 +21,7 @@ const AppWrapper = () =>{
   const [isAuthenticatedLab , setIsAuthenticatedLab] = useState(false);
   const [isAuthenticatedApollo , setIsAuthenticatedApollo] = useState(false);
 
-  const [loading  , setLoading] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({});
   
   return(

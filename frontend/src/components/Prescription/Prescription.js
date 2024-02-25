@@ -1,16 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import UpadateCanvas from "./script"
 import  './prescription.css';
 import { useLocation,useNavigate, useResolvedPath } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { Context } from '../..';
 
 
 
 const Prescription = ( ) => {
 
+const [loader , setLoader] = useState(false);
   
 const handleSaveButtonClick=(event,savetype,user)=> {
   event.preventDefault();
+  setLoader(true);
+  console.log("loading:" ,loader);
   const canvas = document.getElementById("drawing-area")
   const image = canvas.toDataURL("image/png");
 
@@ -40,14 +44,19 @@ const handleSaveButtonClick=(event,savetype,user)=> {
           // alert('Image uploaded successfully');
           // You can perform any additional actions here after successful upload
           toast.success('Image uploaded successfully')
+          setLoader(false);
+
       } else {
           // throw new Error('Failed to upload image');
           toast.error('Failed to upload image');
+          setLoader(false);
       }
+      
   })
   .catch(error => {
       // console.error('Error uploading image:', error);
       toast.error('Error uploading image:' + error);
+      setLoader(false);
       // Handle error, show error message, etc.
   });
 }
@@ -70,7 +79,7 @@ const handleSaveButtonClick=(event,savetype,user)=> {
       navigate(-1);
     }
     if(user !== "Doctor")  document.getElementById("undo-button").style.display = "none";
-    if(user == "Reception"){
+    if(user === "Reception"){
       document.getElementById("save-button").style.display = "none";
       document.getElementById("clear-button").style.display = "none";
       Array.from(document.getElementsByClassName("color-button")).forEach(button => {
@@ -109,13 +118,25 @@ const handleSaveButtonClick=(event,savetype,user)=> {
           {user === 'Medical' ? (
             <>
               <button id="clear-button" className="clear-button mt-2" type="button" style={{ borderRadius: '5px', backgroundColor: 'red' , border: 'transparent' }}>Clear</button>&nbsp;&nbsp;
-              <button id="save-button-1" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save1',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Save</button>
-              <button id="save-button-2" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save2',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Refer to Apollo</button>
+              <button id="save-button-1"  disabled={loader} className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save1',user)} style={{
+    borderRadius: '5px',
+    backgroundColor: loader ? '#CCCCCC' : '#4CAF50', // Change background color when loader is true
+    border: 'transparent'
+  }}>Save</button>
+              <button id="save-button-2" disabled={loader} className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'save2',user)} style={{
+    borderRadius: '5px',
+    backgroundColor: loader ? '#CCCCCC' : '#4CAF50', // Change background color when loader is true
+    border: 'transparent'
+  }}>Refer to Apollo</button>
             </>
           ) : (
             <>
             <button id="clear-button" className="clear-button mt-2" type="button" style={{ borderRadius: '5px', backgroundColor: 'red' , border: 'transparent' }}>Clear</button>&nbsp;&nbsp;
-            <button id="save-button" className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'default',user)} style={{ borderRadius: '5px', backgroundColor: '#4CAF50', border: 'transparent' }}>Save</button>
+            <button id="save-button" disabled={loader} className="save-button mt-2" type="button" onClick={(event) => handleSaveButtonClick(event, 'default',user)} style={{
+    borderRadius: '5px',
+    backgroundColor: loader ? '#CCCCCC' : '#4CAF50', // Change background color when loader is true
+    border: 'transparent'
+  }}>Save</button>
             </>
           )}
 

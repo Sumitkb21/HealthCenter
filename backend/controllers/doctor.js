@@ -129,7 +129,7 @@ export const doclogin = async (req, res) => {
 
 
 //this function is creating, both pastreocrd , and record (which is usse by medical and apollo for temparary and also by doctor)
-export const sendPastrecord = async(req,res)=>{
+export const sendPastrecord = async(req,res)=>
   { 
       
     const {pfnumber,firstname,lastname,doctorname,reg_no,image} = req.body;
@@ -140,11 +140,9 @@ export const sendPastrecord = async(req,res)=>{
       .then(async(result)=>{
       // console.log(result.url);
      
-      
-      
-      
-      
-        
+      const patient = await Pastrecord.findOne({reg_no});
+      if(!patient){
+
       const record =  await Pastrecord.create({
         firstname,
         lastname,
@@ -162,19 +160,41 @@ export const sendPastrecord = async(req,res)=>{
         doctorname,
         imglink:result.url,
       });       
-      await Appointments.deleteOne({ reg_no }); // Use deleteOne instead of findOneAndDelete
+      await Appointments.deleteOne({ reg_no });
+      } // Use deleteOne instead of findOneAndDelete
       
-      
+      else{
+
+        const update = {
+          $set: {
+              imglink:result.url 
+          }
+        };
+
+
+       
+
+        await Pastrecord.findOneAndUpdate(
+          {reg_no}, // Filter for finding the document
+          update, // Update operation to apply
+        );
+      }
 
       res.status(200).send({
         message: "Prescription submitted successfully",
         result
        });
-      }).catch((error) => {
+      }
+      
+      
+      
+      ).catch((error) => {
        res.status(500).send({
         message: "Failed to upload",
         error
        });
       });
+     
   }
-}
+
+

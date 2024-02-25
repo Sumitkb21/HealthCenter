@@ -108,7 +108,7 @@ const defaultImage = () => {
         drawText();
     };
     
-    if(user == "Doctor" || user == "Reception")
+    if(user === "Doctor" || user === "Reception")
     backgroundImage.src = bg;
     else if(appointment && (user !== "Doctor" || user !== "Reception")){
         // console.log(appointment.imagelink);
