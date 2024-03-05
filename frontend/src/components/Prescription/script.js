@@ -184,7 +184,7 @@ function handleDrawingEnd(event) {
     if(event.type !== 'mouseout'){
         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         //if(user === "Doctor")
-         restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
+        //  restore_array.push(canvasContext.getImageData(0,0,canvas.width,canvas.height));
         index+=1;
     }
 }
