@@ -17,7 +17,7 @@ const EmailVerify = () => {
   const [email, setEmail] = useState('');
   const [otp, setOTP] = useState('');
   const [isVerify, setIsVerify] = useState(false);
-  const [remainingTime,setRemainingTime]=useState(60);
+  const [remainingTime,setRemainingTime]=useState(80);
 
   
 
@@ -79,7 +79,7 @@ const EmailVerify = () => {
   useEffect(() => {
     if (isVisible && remainingTime === 0) {
       setIsVisible(false);
-      setRemainingTime(60);
+      setRemainingTime(80);
     }
   }, [isVisible, remainingTime]);
 

@@ -44,6 +44,7 @@ let regDate="";
 let month = appointment.createdAt.substring(5,7); 
 let year = appointment.createdAt.substring(0,4); 
 let day = appointment.createdAt.substring(8,10);
+
 if (appointment ) {
     drName = appointment.doctorname;
     // QueNo = appointment.queueNo;

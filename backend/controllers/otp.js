@@ -49,7 +49,7 @@ export const otpsend = async (req, res) => {
         message: "Otp Sent Successfully",
       });
     } catch (error) {
-      res.json({
+      res.status(401).json({
         message: "OTP has not sent ",
       });
     }

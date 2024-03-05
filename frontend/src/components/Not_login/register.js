@@ -32,8 +32,8 @@ export default function Register() {
     const submitHandler = async(e)=>{
       e.preventDefault();
       setLoading(true); 
-      if(password.length <8){
-        toast.error("password should be atleast 8 length",{duration:1500});
+      if(password.length < 10){
+        toast.error("password should be atleast 10 length",{duration:1500});
         setLoading(false);
       }
       else if(confirmPassword !== password){
