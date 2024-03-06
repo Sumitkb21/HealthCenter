@@ -130,7 +130,7 @@ const ApolloPastRecord = () => {
           <div key={index} className="appointment-box">
             <span>
               <strong>Patient Name:</strong> {appointment.firstname},&nbsp;&nbsp;
-              <strong>Date:</strong> {appointment.date}
+              <strong>Date:</strong> {appointment.createdAt}
             </span>&nbsp;&nbsp;&nbsp;
             <button
                 className="view-prescription-button"

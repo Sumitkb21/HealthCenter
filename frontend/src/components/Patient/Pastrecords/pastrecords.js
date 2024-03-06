@@ -106,7 +106,7 @@ const Pastrecords = () => {
                         <strong>Patient Name:</strong> {record.firstname},&nbsp;&nbsp;
                         {/* <strong>Doctor Name:</strong> {record[0].doctor1},&nbsp;&nbsp;
                         <strong>PF No:</strong> {record[0].pfnumber},&nbsp;&nbsp; */}
-                        {/* <strong>Date:</strong> {record.date} */}
+                        <strong>Date:</strong> {record.createdAt}
                       </span>&nbsp;&nbsp;&nbsp;
                       <button className="view-prescription-button" onClick={() => openImage(record.imglink)}>
                         <FaEye /> View Prescription
@@ -119,7 +119,7 @@ const Pastrecords = () => {
                      <div className="modal-content">
                         <span className="close" onClick={closeModal}>&times;</span>
                         <img src={selectedImage} alt="Selected" />
-                        <button className="downloadimg mt-2" type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> Save </button>
+                        <button className="downloadimg mt-2" type='button' onClick={()=>downloadFileFromURL(selectedImage,"record.png")}> Download </button>
                       </div>
                       
                  </div>
