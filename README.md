@@ -29,7 +29,7 @@ In this project, we have developed a comprehensive MERN Stack website tailored s
 
 - **Management of Past Prescription Records:** Pharmacy staff can upload, store copies of patients' past prescriptions and download for reference purposes.
 
-### For Apollo (Admin):
+### For Apollo:
 - **Access to Appointments:** Apollo Pharmacy staff can access all appointments refered by health center pharmacy. They are granted write access to mark the availability of medicines prescribed by doctors. 
 
 - **Management of Past Prescription Records:** Apollo Pharmacy staff can upload, store copies of patients' past prescriptions and download for reference purposes.
