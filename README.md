@@ -42,7 +42,7 @@ In this project, we have developed a comprehensive MERN Stack website tailored s
 
 ## Installation
 
-To run this project in your local PC( set the critical information in .env file before running the below commands ) 
+To run this project in your local PC( set the critical information in config.env file (/backend/data) before running the below commands ) 
 ```bash  
   cd backend
   npm i
