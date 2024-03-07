@@ -40,7 +40,7 @@ In this project, we have developed a comprehensive MERN Stack website tailored s
 ### For nurse:
 - **Patient Assessment:** Nurses can measure vital signs such as blood pressure, temperature, and other pre-treatment parameters for patients and able to write on appointment of the patient. 
 
-## Deployment
+## Installation
 
 To run this project in your local PC( set the critical information in .env file before running the below commands ) 
 ```bash  
@@ -55,5 +55,11 @@ To run this project in your local PC( set the critical information in .env file 
   npm i
   npm start
 ```
+
+## Authors
+
+- [@Sumit Kumar Bairwa](https://github.com/sumitkb21)
+- [@Pinkesh Mahawar](https://github.com/nandeshboyz024)
+- [@Ujjwal Gautam](https://github.com/ujjwalg21)
 
 
