@@ -37,7 +37,7 @@ In this project, we have developed a comprehensive MERN Stack website tailored s
 ### For Lab Technicians:
 - **Test Management:** Lab technicians can manage and track medical tests conducted for patients, ensuring accuracy and efficiency.
 
-### For nurse:
+### For Nurse:
 - **Patient Assessment:** Nurses can measure vital signs such as blood pressure, temperature, and other pre-treatment parameters for patients and able to write on appointment of the patient. 
 
 ## Installation
