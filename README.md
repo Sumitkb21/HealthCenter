@@ -2,13 +2,14 @@
 # Health Center, IITK
 
 Welcome to the Health Center IIT Kanpur website repository!
+![image](https://github.com/Sumitkb21/Health_Center/assets/101947627/bc56c0b6-de99-4293-ae9d-fd4a85d88d56)
 
 ## Project Overview
 
 In this project, we have developed a comprehensive MERN Stack website tailored specifically for the Health Center IITK. Our website serves as a digital replacement for traditional patient health booklets, streamlining the entire process by eliminating the need for pen and paper.
+![image](https://github.com/Sumitkb21/Health_Center/assets/101947627/82970f23-e7a9-4e39-85b6-229f241a22f1)
 
 ## Key Features
-
 ### For Patients:
 - **Digital Health Records:** Our website enables patients to securely access and download copies of their past health records, empowering them with convenient control over their medical history anytime, anywhere.
   
